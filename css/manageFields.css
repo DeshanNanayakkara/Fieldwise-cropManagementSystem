@@ -1,17 +1,17 @@
 .main-content {
+    background-color: #E8EFEF;
     grid-area: main;
     display: grid;
     grid-template-columns: auto 350px;
-    gap: 20px;
-    padding: 20px;
+    /* gap: 20px;
+    padding: 20px; */
   }
   
   .main-content .row-1 {
     display: grid;
     place-content: center;
     margin: 20px;
-    /* grid-template-rows: repeat(4, 1fr); */
-    gap: 15px;
+    /* gap: 15px; */
   }
   
   .main-content .row-2 {
@@ -28,29 +28,32 @@
   }
   
   .styled-table {
+    background-color: #ffffff;
     width: 100%; /* Adjusted to full width */
     border-collapse: collapse; /* Collapse borders */
   }
   
   .styled-table th,
-  .styled-table td {
-    border: none; /* Removed borders from cells */
-    padding: 8px;
+  .styled-table td { /* Removed borders from cells */
+    padding: 4px;
     text-align: left;
   }
   
   .styled-table th {
-    background-color: #4CAF50;
+    background-color: #bbc1be;
     color: white;
     font-weight: bold;
   }
   
-  .styled-table tr:nth-child(even) {
+  /* .styled-table tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+  .styled-table tr:nth-child(odd) {
+    background-color: #dddddd;
+  } */
   
   .styled-table tr:hover {
-    background-color: #ddd;
+    background-color: #b5f4a36d;
   }
   
   /* Additional Content Area */
@@ -101,3 +104,135 @@ form{
     padding: 20px;
     place-content: center;
 }
+.card-3{
+    background-color: #ffffff74;
+    padding: 10px;
+}
+.card-4{
+    background-color: #ffffff00;
+    padding: 10px;
+}
+/* From Uiverse.io by Yaya12085 */ 
+.imageupload{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+  }
+  
+.uform {
+    background-color: #fff;
+    box-shadow: 0 10px 60px rgb(218, 229, 255);
+    border: 1px solid rgb(159, 159, 160);
+    border-radius: 20px;
+    padding: 2rem .7rem .7rem .7rem;
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 320px;
+  }
+  
+  .uform-title {
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  
+  .uform-paragraph {
+    margin-top: 10px;
+    font-size: 0.9375rem;
+    color: rgb(105, 105, 105);
+  }
+  
+  .drop-container {
+    background-color: #fff;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 2.1875rem;
+    border-radius: 10px;
+    border: 2px dashed #b5f4a3;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+  }
+  
+  .drop-container:hover {
+    background: #b5f4a36d;
+    border-color: rgba(17, 17, 17, 0.616);
+  }
+  
+  .drop-container:hover .drop-title {
+    color: #222;
+  }
+  
+  .drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+  }
+  
+  #file-input {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 2px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+  }
+  
+  #file-input::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #43C040;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  #file-input::file-selector-button:hover {
+    background: #b5f4a36d;
+  }
+  /* From Uiverse.io by portseif */ 
+button {
+    background-color: #ffffff;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 1.5rem;
+    color: #111827;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+  
+  button:hover {
+    background-color: #b5f4a36d;
+  }
+  
+  button:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.1);
+    outline-offset: 2px;
+  }
+  
+  button:focus-visible {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  

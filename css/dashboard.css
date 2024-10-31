@@ -4,7 +4,7 @@
   z-index: 1000;
   background-color: rgb(255, 255, 255);
   display: grid;
-  grid-template-columns: 60px auto; /* Adjusted width of sidebar */
+  grid-template-columns: 80px calc(100vw - 80px); /* Adjusted width of sidebar */
   grid-template-rows: 80px auto; /* Headbar height */
   grid-template-areas:
       "navbar headbar"
@@ -16,14 +16,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 60px;
+  width: 80px;
   height: 100vh; /* Full height of the viewport */
-  background-color: #3F463E;
+  background-color: #ffffff;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 30px 0;
   grid-area: navbar;
   z-index: 999; /* Ensure it's above main content */
   place-content: center;
@@ -37,7 +37,7 @@
 .dashboardnavbar img:hover {
   transform: scale(1.2);
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.133);
+  background-color: #b5f4a368;
   padding: 5px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
@@ -49,7 +49,7 @@
 .tooltip {
   width: 180px;
   visibility: hidden;
-  background-color: #E2F2DF;
+  background-color: #b4f4a3;
   color: #000000;
   text-align: center;
   border-radius: 5px;
@@ -71,10 +71,10 @@
 .headbar {
   position: fixed;
   top: 0;
-  left: 60px; /* Matches navbar width */
+  left: 80px; /* Matches navbar width */
   width: calc(100vw - 60px); /* Fills the remaining space */
-  height: 80px;
-  background-color: #f4f4f4;
+  height: 90px;
+  background-color: #E8EFEF;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -103,6 +103,53 @@
 
 #time {
   color: #555;
+}
+/* profile card */
+/* From Uiverse.io by mrhyddenn */ 
+.pcard {
+  width: 290px;
+  height: 90px;
+  background: #ffffff00;
+  position: absolute;
+  top: 10px; /* Adjust this to control vertical positioning */
+  right: 10px; /* Adjust this to control horizontal positioning */
+  padding: 12px 10px;
+  transform: translate(0, 0); /* Remove centering transform */
+  z-index: 10; /* Ensure it stays on top */
+}
+
+
+.pcard_load {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  float: left;
+  background-image: url('/Assests/Images/wlcm1.png'); /* Replace with your image path */
+  background-size: cover; /* Cover the whole circle */
+  background-position: center; 
+  border-radius: 50%; 
+}
+
+.pcard_load_extreme_title {
+  width: 190px;
+  height: 30px;
+  position: relative;
+  float: right;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.pcard_load_extreme_descripion {
+  width: 190px;
+  height: 27px;
+  position: relative;
+  float: right;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0);
+  background-size: 200% 100%;
+  background-position: 100% 0;
 }
 
 
