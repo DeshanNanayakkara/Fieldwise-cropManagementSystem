@@ -1,0 +1,103 @@
+.main-content {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: auto 350px;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .main-content .row-1 {
+    display: grid;
+    place-content: center;
+    margin: 20px;
+    /* grid-template-rows: repeat(4, 1fr); */
+    gap: 15px;
+  }
+  
+  .main-content .row-2 {
+    place-content: center;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 15px;
+  }
+  
+  .table-container {
+    max-height: 500px; /* Adjust based on row height; approx 10 rows */
+    overflow-y: auto;
+    border: none; /* Removed border around the container */
+  }
+  
+  .styled-table {
+    width: 100%; /* Adjusted to full width */
+    border-collapse: collapse; /* Collapse borders */
+  }
+  
+  .styled-table th,
+  .styled-table td {
+    border: none; /* Removed borders from cells */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .styled-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Additional Content Area */
+  .main {
+    grid-area: main; /* Main content area */
+    padding: 20px; /* Add padding for aesthetics */
+    overflow: auto; /* Allow scrolling if content exceeds view */
+  }
+  
+  /* Optional: Style for tables or other content within main */
+  .table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+  }
+  
+  .table th,
+  .table td {
+    border: none; /* Removed border from cells */
+    padding: 8px; /* Add padding to cells */
+    text-align: left; /* Left align text */
+  }
+  
+  .table th {
+    background-color: #f2f2f2; /* Different color for header */
+  }
+  
+  /* For input fields or buttons in the main section */
+  .input-field,
+  .button {
+    margin: 10px 0; /* Space between elements */
+    padding: 10px; /* Padding for comfort */
+    border: none; /* Removed border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: none; /* Optional: Remove box shadow for inputs */
+  }
+.buttonset{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    place-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}  
+form{
+    padding: 30px;
+}
+.card{
+    padding: 20px;
+    place-content: center;
+}

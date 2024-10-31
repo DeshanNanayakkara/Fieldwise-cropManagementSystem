@@ -1,62 +1,108 @@
 .dashboard {
-    width: 80vw;
-    height: 80vh;
-    margin: 10vh auto;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.4);
-    display: grid;
-    grid-template-columns: 80px auto;
-  }
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 60px auto; /* Adjusted width of sidebar */
+  grid-template-rows: 80px auto; /* Headbar height */
+  grid-template-areas:
+      "navbar headbar"
+      "navbar main";
+  overflow: hidden; /* Prevent scrolling */
+}
 
-  .dashboardnavbar {
-    height: 80vh;
-    width: 80px;
-    background-color: #114321;
-    color: white;
-    display: flex;
-    place-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-  }
+.dashboardnavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #3F463E;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  grid-area: navbar;
+  z-index: 999; /* Ensure it's above main content */
+  place-content: center;
+}
 
-  .dashboardnavbar img {
-    width: 30px; /* Adjust icon size as needed */
-    height: auto;
-    margin: 10px 0; /* Space between icons */
-  }
-  .dashboardnavbar img:hover{
-    transform: scale(1.2);
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.133);
-    padding: 5px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-    display: inline-block;
-    
-  }
-  .icon-wrapper {
-    position: relative;
-  }
-  
-  .tooltip {
-    visibility: hidden;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
-    position: absolute;
-    top: 50%;
-    left: 40px; /* Adjust this value to control distance from icon */
-    transform: translateY(-50%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  
-  .icon-wrapper:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  
+.dashboardnavbar img {
+  width: 30px;
+  margin: 10px 0;
+}
+
+.dashboardnavbar img:hover {
+  transform: scale(1.2);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.133);
+  padding: 5px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon-wrapper {
+  position: relative;
+}
+
+.tooltip {
+  width: 180px;
+  visibility: hidden;
+  background-color: #E2F2DF;
+  color: #000000;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.icon-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.headbar {
+  position: fixed;
+  top: 0;
+  left: 60px; /* Matches navbar width */
+  width: calc(100vw - 60px); /* Fills the remaining space */
+  height: 80px;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  grid-area: headbar;
+  z-index: 998; /* Ensure it's above main content */
+}
+
+.headbar h3 {
+  font-size: 25px;
+  margin: 0;
+}
+
+/* Date and Time Styling */
+.datetime {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+#date {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #000;
+}
+
+#time {
+  color: #555;
+}
+
+
