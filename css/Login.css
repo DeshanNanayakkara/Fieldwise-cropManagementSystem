@@ -1,5 +1,8 @@
 body {
-    background-image: linear-gradient(to top, #96fbc4 0%, #f9f586 100%);
+    background-image: url('/Assests/Images/backgroundGreen3.png'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,13 +11,18 @@ body {
     font-size: 15px;
 }
 .LoginCard{
+    /* background-image: url('/Assests/Images/backgroundGreen.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; */
+    background-color: #ffffff67;
+    border-radius: 100px 0 100px 0 ;
     position: relative;
     height: 600px;
     width: 430px;
     padding: 5vw;
     place-content: center;
     box-shadow: inset;
-    background-color: rgb(255, 255, 255);
     text-align: center;
     box-shadow: 0 8px 8px rgba(0, 0, 0.4, 0.4);
     
@@ -36,3 +44,18 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .close-btn:hover {
+    color: #17ac23; /* Color change on hover */
+  }
