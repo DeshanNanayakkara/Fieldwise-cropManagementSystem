@@ -4,20 +4,29 @@ body {
 }
 
 /* Main Content Area */
+/* Main Content Area */
+/* Main Content Area */
 .main-content {
   background-color: #E8EFEF;
   grid-area: main;
   display: grid;
   grid-template-columns: auto 350px;
   border-left: 0.5px solid #43C040;
+  margin-top: 20px; /* Offset from header */
+  height: calc(100vh - 80px); /* Full height minus header height */
 }
 
 /* Row 1 in Main Content */
 .main-content .row-1 {
   display: grid;
   place-content: center;
-  margin: 20px;
+  overflow-y: auto; /* Enables scrolling */
+  margin-top: 20px; /* Additional space below header */
+  padding: 0 20px 20px; /* Side and bottom padding */
+  height: calc(100vh - 140px); /* Ensures room for header and padding */
 }
+
+
 
 /* Row 2 in Main Content */
 .main-content .row-2 {

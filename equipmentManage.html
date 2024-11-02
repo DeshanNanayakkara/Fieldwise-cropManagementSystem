@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CropManagement</title>
+    <title>Equipment Management</title>
     <link rel="stylesheet" href="/css/dashboard.css" />
     <link rel="stylesheet" href="/css/ManagementForms.css" />
     <link
@@ -39,7 +39,7 @@
             <span class="tooltip">Crop Management</span>
           </div>
           <div class="icon-wrapper">
-            <img src="/Assests/Icons/Team.png" alt="Team Icon" />
+            <img src="/Assests/Icons/Team.png" alt="Team Icon" onclick="window.location.href='staffManagement.html'"/>
             <span class="tooltip">Staff Management</span>
           </div>
           <div class="icon-wrapper">
@@ -47,11 +47,11 @@
             <span class="tooltip">ClipboardMonitoring Logs</span>
           </div>
           <div class="icon-wrapper">
-            <img src="/Assests/Icons/Tractor.png" alt="Bar Chart Icon" />
+            <img src="/Assests/Icons/Tractor.png" alt="Bar Chart Icon" onclick="window.location.href='manageVehicles.html'"/>
             <span class="tooltip">Vehicle Management</span>
           </div>
           <div class="icon-wrapper">
-            <img src="/Assests/Icons/Maintenance.png" alt="Potted Plant Icon" />
+            <img src="/Assests/Icons/Maintenance.png" alt="Potted Plant Icon"  onclick="window.location.href='equipmentManage.html'"/>
             <span class="tooltip">Equipment Management</span>
           </div>
           <div class="icon-wrapper">
@@ -78,7 +78,7 @@
             <img src="/Assests/Images/greenshdw.png" alt="Profile Image"/>
           </div>
           <div class="logocontent">
-            <h3>Crop Management</h3>
+            <h3>Manage Equipments</h3>
             <div class="datetime">
               <span id="date"></span>
               <span id="time"></span>
@@ -103,57 +103,48 @@
           <div class="card">
             <form class="row g-3">
               <div class="col-md-6">
-                <label for="cropCode" class="form-label">Crop Code</label>
-                <input type="text" class="form-control" id="cropCode" />
+                <label for="eqId" class="form-label">Equipment ID</label>
+                <input type="text" class="form-control" id="eqId" />
               </div>
               <div class="col-md-6">
-                <label for="cropCommonName" class="form-label">Crop Common Name</label>
-                <input type="text" class="form-control" id="cropCommonName" />
+                <label for="eqName" class="form-label">Equipment Name</label>
+                <input type="text" class="form-control" id="eqName" />
               </div>
-              <div class="col-md-6">
-                <label for="cropScientificName" class="form-label">Crop Scientific Name</label>
-                <input type="text" class="form-control" id="cropScientificName" />
-              </div>
-              <div class="col-md-6">
-                <label for="cropCategory" class="form-label">cropCategory</label>
-                <input type="text" class="form-control" id="cropCategory" />
-              </div>
-              <div class="col-md-6">
-                <label for="cropSesson" class="form-label">Crop Sesson</label>
-                <input type="text" class="form-control" id="cropSesson" />
-              </div>
-              <!--  -->
               
-              <!--  -->
-              <!--  -->
               <div class="col-md-4">
-                <label for="field" class="form-label">field</label>
+                <label for="eType" class="form-label">Type</label>
+                <select id="eType" class="form-select">
+                  <option selected>Electrical</option>
+                  <option>Mechanical</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="availability" class="form-label">Availability</label>
+                <select id="availability" class="form-select">
+                  <option selected>Available</option>
+                  <option>Not Available</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="staff" class="form-label">Assigned Staff</label>
+                <select id="staff" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="field" class="form-label">Assigned field </label>
                 <select id="field" class="form-select">
                   <option selected>Choose...</option>
                   <option>...</option>
                 </select>
               </div>
-              <!--  -->
-              <form class="uform">
-                <p class="uform-paragraph">File should be an image</p>
-                <div class="imageupload">
-                  <label for="file-input" class="drop-container">
-                    <span class="drop-title">Drop files here</span>
-                    or
-                    <input
-                      type="file"
-                      accept="image/*"
-                      required=""
-                      id="file-input"
-                    />
-                  </label>
-                </div>
-              </form>
+             
               <!--  -->
               <div class="buttonset">
-                <button>Add new Crop</button>
-                <button>Update Crop</button>
-                <button>Delete Crop</button>
+                <button>Add new Equipment</button>
+                <button>Update Equipment</button>
+                <button>Delete Equipment</button>
               </div>
             </form>
           </div>
@@ -165,7 +156,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Search crop..."
+                placeholder="Search..."
                 aria-label="Search"
               />
               <div class="input-group-append">
@@ -177,7 +168,7 @@
             </div>
           </div>
           <div class="card-3">
-            <h4>Crop Data</h4>
+            <h4>Vehicle Data</h4>
             <div class="table-container">
               <table class="styled-table">
                 <tr>
