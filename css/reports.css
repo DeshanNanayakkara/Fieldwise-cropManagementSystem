@@ -1,0 +1,86 @@
+/* Analytics Page Custom Styles */
+
+/* Layout adjustments for main content */
+.main-content {
+    padding: 20px;
+}
+
+/* Header styles */
+.headbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+/* Summary cards */
+.summary-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-cards .card {
+    flex: 1;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-cards .card h5 {
+    font-weight: 600;
+    color: #555;
+}
+
+/* Chart section */
+.chart-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.chart-card {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.chart-card h4 {
+    margin-bottom: 15px;
+}
+
+/* Table styling */
+.table-section {
+    margin-top: 20px;
+}
+
+.table-section h4 {
+    margin-bottom: 15px;
+}
+
+.table-section .table {
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-section .table th,
+.table-section .table td {
+    padding: 12px;
+    text-align: center;
+}
+
+/* Dashboard icon styling */
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
