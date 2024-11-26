@@ -1,11 +1,13 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+.container1{
+  color: #000000;
+}
 .dashboard {
   width: 100vw;
   height: 100vh;
   z-index: 1000;
-  background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 80px calc(100vw - 80px); /* Adjusted width of sidebar */
   grid-template-rows: 80px auto; /* Headbar height */
@@ -21,7 +23,7 @@ body {
   left: 0;
   width: 80px;
   height: 100vh; /* Full height of the viewport */
-  background-color: #ffffff;
+  background-color: #bbe0c2;
   color: white;
   display: flex;
   flex-direction: column;
@@ -33,16 +35,14 @@ body {
 }
 
 .dashboardnavbar img {
-  width: 30px;
+  width: 25px;
   margin: 10px 0;
+  opacity: 50%;
 }
 
 .dashboardnavbar img:hover {
-  transform: scale(1.2);
-  border-radius: 50%;
-  background-color: #ffffff;
-  padding: 5px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* transform: scale(2); */
+  opacity: 100%;
 }
 
 .icon-wrapper {
@@ -53,7 +53,7 @@ body {
 .tooltip {
   width: 180px;
   visibility: hidden;
-  background-color: #B7F6C7;
+  background-color: #f0f0f0;
   color: #000000;
   text-align: center;
   border-radius: 5px;
@@ -72,132 +72,33 @@ body {
   opacity: 1;
 }
 
-.headbar {
+/* Popup styles */
+.popup {
   position: fixed;
   top: 0;
-  left: 80px; /* Matches navbar width */
-  width: calc(100vw - 60px); /* Fills the remaining space */
-  height: 100px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #43C040;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  grid-area: headbar;
-  z-index: 998; /* Ensure it's above main content */
-}
-
-.headbar h3 {
-  font-size: 25px;
-  margin: 0;
-}
-
-/* Date and Time Styling */
-.datetime {
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-}
-
-#date {
-  margin-right: 10px;
-  font-weight: bold;
-  color: #000;
-}
-
-#time {
-  color: #555;
-}
-/* profile card */
-/* From Uiverse.io by mrhyddenn */ 
-.pcard {
-  width: 290px;
-  height: 90px;
-  background: #ffffff00;
-  position: absolute;
-  top: 0; /* Adjust this to control vertical positioning */
-  right: 10px; /* Adjust this to control horizontal positioning */
-  padding: 12px 10px;
-  transform: translate(0, 0); /* Remove centering transform */
-  z-index: 10; /* Ensure it stays on top */
-}
-
-
-.pcard_load {
-  width: 70px;
-  height: 70px;
-  position: relative;
-  float: left;
-  background-image: url('/Assests/Images/wlcm1.png'); /* Replace with your image path */
-  background-size: cover; /* Cover the whole circle */
-  background-position: center; 
-  border-radius: 50%; 
-}
-
-.pcard_load_extreme_title {
-  width: 190px;
-  height: 30px;
-  position: relative;
-  float: right;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-}
-
-.pcard_load_extreme_descripion {
-  width: 190px;
-  height: 27px;
-  position: relative;
-  float: right;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0);
-  background-size: 200% 100%;
-  background-position: 100% 0;
-}
-
-.fixed-bottom-text {
-  position: fixed;
-  bottom: 0; /* 30px from the bottom */
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  z-index: 9999; /* Ensure it's in front of all layers */
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  text-align: center;
-}
-/* logo */
-.logogrid-container {
-  display: grid;
-  grid-template-columns: auto 1fr; /* Two columns: one auto-width, one flexible */
-  align-items: center;
-  gap: 20px; /* Space between columns */
-}
-
-.logo {
-  width: 60px;
-  height: 60px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo img {
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
-.logocontent {
-  display: grid;
-  grid-template-rows: auto auto; /* Two rows */
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
 }
 
-.datetime {
-  display: flex;
-  gap: 10px; /* Space between date and time */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
 }
