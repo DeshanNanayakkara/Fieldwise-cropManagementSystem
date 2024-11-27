@@ -23,7 +23,7 @@ body {
 .dashboardnavbar img {
   width: 25px;
   margin: 10px 0;
-  opacity: 50%;
+  opacity: 75%;
 }
 
 .dashboardnavbar img:hover {
@@ -39,7 +39,7 @@ body {
 .tooltip {
   width: 180px;
   visibility: hidden;
-  background-color: #f0f0f0;
+  background-color: #89fda083;
   color: #000000;
   text-align: center;
   border-radius: 5px;
