@@ -1,20 +1,6 @@
 body {
   font-family: 'Roboto', sans-serif;
-}
-.container1{
-  color: #000000;
-}
-.dashboard {
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  display: grid;
-  grid-template-columns: 80px calc(100vw - 80px); /* Adjusted width of sidebar */
-  grid-template-rows: 80px auto; /* Headbar height */
-  grid-template-areas:
-      "navbar headbar"
-      "navbar main";
-  overflow: hidden; /* Prevent scrolling */
+ 
 }
 
 .dashboardnavbar {
