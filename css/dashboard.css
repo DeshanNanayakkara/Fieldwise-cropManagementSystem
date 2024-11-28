@@ -9,7 +9,7 @@ body {
   left: 0;
   width: 80px;
   height: 100vh; /* Full height of the viewport */
-  background-color: #bbe0c2;
+  background-color: #ffffff;
   color: white;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ body {
 .tooltip {
   width: 180px;
   visibility: hidden;
-  background-color: #89fda083;
+  background-color: #98ffad;
   color: #000000;
   text-align: center;
   border-radius: 5px;

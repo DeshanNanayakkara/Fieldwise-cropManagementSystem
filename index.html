@@ -51,6 +51,7 @@
       }
       .login-card {
         place-content: center;
+        text-align: center;
         width: 100%;
         padding: 30px;
         background-color: #fff;
@@ -61,7 +62,9 @@
         background-color: #1a7036;
       }
       .login-card .btn:hover{
-        background-color: #66c53d;
+        background-color: #a9dc4e;
+        color: black;
+        border-color: #ffffff;
       }
 
       .login-card .form-check {
@@ -172,13 +175,23 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
  color: #fff;
 }
+.Login-animaton{
+  width: 80px;
+  height: 80px;
+  
+}
+form{
+  text-align: left;
+}
     </style>
   </head>
   <body>
     <div class="form-1">
-      <img src="/Assests/Images/loginpic.png" alt="Login Image" />
+      <img src="/Assests/Images/Frame 6.png" alt="Login Image" />
       <div class="login-card">
-        <h4 class="text-center mb-4">Login</h4>
+        <h4 class="text-center mb-4">Green Shadow Access Portal</h4>
+        <video src="/Assests/Videos/face-scan_WayMM2Wa.mp4" class="Login-animaton" autoplay loop muted></video>
+
         <form>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -210,12 +223,18 @@ button:hover .button-text {
               Accept Cookies
             </label>
           </div>
-          <button type="button" class="btn btn-primary mt-3">Sign In</button>
+          <button type="button" class="btn btn-primary mt-3" id="signInButton">Sign In</button>
           <div class="links">
-            <a href="#">Register</a>
+            <a href="">Register</a>
           </div>
         </form>
       </div>
     </div>
+    <script>
+      // JavaScript to navigate to the staff management form
+      document.getElementById("signInButton").addEventListener("click", function() {
+        window.location.href = "staffManagement.html"; // Replace with the actual URL or file name
+      });
+    </script>
   </body>
 </html>

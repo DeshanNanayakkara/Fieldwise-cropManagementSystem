@@ -13,7 +13,6 @@ body {
     padding: 20px;
     flex-grow: 1;
     background-color: #ffffff ; /*#f9f9f9 */
-    box-shadow: 4px 4px 4px 4px #00000027;
     border-radius: 5px;
 }
 
@@ -187,16 +186,24 @@ h3{
 /* table */
 table {
     width: 100%;
+    margin: 20px auto;
     border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #ffffff; /* White table background */
-}
+  }
 
-th, td {
-    border: 2px solid #f3f3f3; /* Green borders */
-    padding: 10px;
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: left;
-}
+  }
+
+  tr:nth-child(even) {
+    background-color: #9dfd9648; /* Light gray color for even rows */
+  }
+
+  th {
+    background-color:#014434; /* Green header */
+    color: white;
+  }
 
 /* button */
 /* From Uiverse.io by aaronross1 */ 
