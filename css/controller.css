@@ -22,7 +22,7 @@
   .nav {
     width: 250px;
     background-image: 
-      linear-gradient(rgba(0, 0, 0, 0.736), rgba(0, 0, 0, 0.796)), 
+      linear-gradient(rgba(0, 75, 4, 0.795), rgba(0, 0, 0, 0.925)), 
       url('/Assests/Images/Frame\ 9.png');
     background-size: cover;
     background-position: center;
@@ -153,23 +153,8 @@
     background-color: var(--secondary-color);
   }
 
-  .staff-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
+  
 
-  .staff-table th, .staff-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-  }
-
-  .staff-table th {
-    background-color: var(--primary-color);
-    color: white;
-  }
 
   /* Collapsed State */
   .nav.collapsed {
@@ -233,5 +218,94 @@
     /* Hide text in compact mode */
     .nav .nav-text {
       white-space: nowrap;
+    }
+  }
+
+
+
+  .staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    background-color: #ddd;
+  }
+  
+  .staff-table th, 
+  .staff-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .edit-btn, 
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  .staff-table th {
+    background-color: rgb(19, 77, 19);
+    color: white;
+  }
+  .edit-btn {
+    color: var(--secondary-color);
+  }
+  
+  .delete-btn {
+    color: rgb(19, 192, 85);
+  }
+  
+  .edit-btn:hover, 
+  .delete-btn:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+  
+  /* Media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    .staff-table {
+      font-size: 12px;
+    }
+    
+    .staff-table th, 
+    .staff-table td {
+      padding: 5px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .staff-table {
+      display: block;
+      overflow-x: auto;
+    }
+    
+    .staff-table thead {
+      display: none;
+    }
+    
+    .staff-table tr {
+      display: block;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+    }
+    
+    .staff-table td {
+      display: block;
+      text-align: right;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .staff-table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
     }
   }

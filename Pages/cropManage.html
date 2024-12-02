@@ -84,16 +84,16 @@
 
   <main class="content" id="content">
     <div class="HeadingBox">
-      <h1>Staff Management</h1>
+      <h1>Crop Management</h1>
       <div class="search-container">
         <input type="text" class="search-input" placeholder="Search staff...">
-        <button class="add-staff-btn" id="openPopup">Add Staff</button>
+        <button class="add-crop-btn" id="openPopup">Add Crop</button>
     </div>
     </div>
   
 
   
-    <table class="staff-table">
+    <table class="Crop-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -132,54 +132,46 @@
   <div class="popup" id="popup">
     <div class="popup-content">
         <span class="close" id="closePopup">&times;</span>
-        <h2>Manage Staff Details</h2>
-        <form id="staffForm">
+        <h2>Manage CropDetails</h2>
+        <form id="cropForm">
           <div class="inputFieldBox">
-            <input type="text" class="form-control mb-3" placeholder="Staff ID" id="staffId" required>
-    
-    <!-- First Name -->
-    <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
-    
-    <!-- Last Name -->
-    <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
-    
-    <!-- Designation -->
-    <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
-    
-    <!-- Gender -->
-    <select class="form-control mb-3" id="gender" required>
-        <option value="" disabled selected>Gender</option>
-        <option value="MALE">Male</option>
-        <option value="FEMALE">Female</option>
-        <option value="OTHER">Other</option>
-    </select>
-    
-    <!-- Date of Birth -->
-    <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
-    
-    <!-- Date Joined -->
-    <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
-    
-    <!-- Address Lines -->
-    <textarea class="form-control mb-3" placeholder="Address Line 1" id="addressLine1" required></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 2" id="addressLine2"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 3" id="addressLine3"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 4" id="addressLine4"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 5" id="addressLine5"></textarea>
-    
-    <!-- Contact Number -->
-    <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
-    
-    <!-- Email -->
-    <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
-    
-    <!-- Role -->
-    <select class="form-control mb-3" id="role" required>
-      <option value="" disabled selected>Gender</option>
-      <option value="OTHER">other</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-  </select>
+            <!-- Staff ID -->
+            <input type="text" class="form-control mb-3" placeholder="Staff ID" id="staffId" readonly>
+            
+            <!-- First Name -->
+            <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
+            
+            <!-- Last Name -->
+            <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
+            
+            <!-- Designation -->
+            <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
+            
+            <!-- Gender -->
+            <select class="form-control mb-3" id="gender" required>
+                <option value="" disabled selected>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <!-- Date of Birth -->
+            <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
+            
+            <!-- Date Joined -->
+            <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
+            
+            <!-- Address -->
+            <textarea class="form-control mb-3" placeholder="Address" id="address" required></textarea>
+            
+            <!-- Contact Number -->
+            <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
+            
+            <!-- Email -->
+            <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
+            
+            <!-- Role -->
+            <input type="text" class="form-control mb-3" placeholder="Role" id="role" required>
           </div>
             <!-- CRUD Buttons -->
             <div class="ButtonBox">
