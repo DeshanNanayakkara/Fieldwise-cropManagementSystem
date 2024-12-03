@@ -50,7 +50,7 @@ $(document).ready(function () {
         "designation": $('#staffForm #designation').val(),
         "gender": $('#staffForm #gender').val(),
         "joinedDate": $('#staffForm #joinedDate').val(),
-        "dob": $('#staffForm #gender').val(),
+        "dob": $('#staffForm #dob').val(),
         "addressLine01": $('#staffForm #addressLine1').val(),
         "addressLine02": $('#staffForm #addressLine2').val(),
         "addressLine03": $('#staffForm #addressLine3').val(),
@@ -62,7 +62,9 @@ $(document).ready(function () {
       }
       
   
-      saveStaffMember(formData)
+      saveStaffMember(formData).then(r => {
+          alert("Staff member saved successfully");
+      })
     });
   });
   

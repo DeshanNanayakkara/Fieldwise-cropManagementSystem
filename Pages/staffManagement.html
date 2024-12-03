@@ -7,6 +7,51 @@
   <link rel="stylesheet" href="/css/popupForms.css">
   <link rel="stylesheet" href="/css/controller.css">
   <title>Green Shadow Dashboard</title>
+  <style>
+    /* Enhanced input field styles */
+    .form-control {
+      transition: all 0.3s ease;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .form-control:hover {
+      border-color: #4CAF50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
+
+    .form-control:focus {
+      border-color: #45a049;
+      box-shadow: 0 0 8px rgba(69, 160, 73, 0.5);
+    }
+
+    .staff-form-container {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .ButtonBox {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
   <nav class="nav" id="navbar">
@@ -87,112 +132,118 @@
       <h1>Staff Management</h1>
       <div class="search-container">
         <input type="text" class="search-input" placeholder="Search staff...">
-        <button class="add-staff-btn" id="openPopup">Add Staff</button>
+        <button class="add-staff-btn" id="toggleAddStaff">Add Staff</button>
+      </div>
     </div>
-    </div>
-  
 
-  
-    <table class="staff-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Position</th>
-          <th>Department</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>John Doe</td>
-          <td>Manager</td>
-          <td>Agriculture</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jane Smith</td>
-          <td>Field Supervisor</td>
-          <td>Crop Management</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+    <!-- Container for dynamic content -->
+    <div id="staffContentContainer">
+      <!-- Staff Table -->
+      <div class="staff-table-container" id="staffTableContainer">
+        <table class="staff-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Department</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td>Manager</td>
+              <td>Agriculture</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jane Smith</td>
+              <td>Field Supervisor</td>
+              <td>Crop Management</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <!-- popup -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
-        <span class="close" id="closePopup">&times;</span>
-        <h2>Manage Staff Details</h2>
+      <!-- Staff Form Container (Initially Hidden) -->
+      <div class="staff-form-container" id="staffFormContainer" style="display: none;">
         <form id="staffForm">
           <div class="inputFieldBox">
             <input type="text" class="form-control mb-3" placeholder="Staff ID" id="staffId" required>
-    
-    <!-- First Name -->
-    <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
-    
-    <!-- Last Name -->
-    <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
-    
-    <!-- Designation -->
-    <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
-    
-    <!-- Gender -->
-    <select class="form-control mb-3" id="gender" required>
-        <option value="" disabled selected>Gender</option>
-        <option value="MALE">Male</option>
-        <option value="FEMALE">Female</option>
-        <option value="OTHER">Other</option>
-    </select>
-    
-    <!-- Date of Birth -->
-    <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
-    
-    <!-- Date Joined -->
-    <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
-    
-    <!-- Address Lines -->
-    <textarea class="form-control mb-3" placeholder="Address Line 1" id="addressLine1" required></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 2" id="addressLine2"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 3" id="addressLine3"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 4" id="addressLine4"></textarea>
-    <textarea class="form-control mb-3" placeholder="Address Line 5" id="addressLine5"></textarea>
-    
-    <!-- Contact Number -->
-    <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
-    
-    <!-- Email -->
-    <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
-    
-    <!-- Role -->
-    <select class="form-control mb-3" id="role" required>
-      <option value="" disabled selected>Gender</option>
-      <option value="OTHER">other</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-  </select>
+            <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
+            <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
+            <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
+            
+            <select class="form-control mb-3" id="gender" required>
+              <option value="" disabled selected>Gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+            
+            <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
+            <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
+            
+            <textarea class="form-control mb-3" placeholder="Address Line 1" id="addressLine1" required></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 2" id="addressLine2"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 3" id="addressLine3"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 4" id="addressLine4"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 5" id="addressLine5"></textarea>
+            
+            <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
+            <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
+
+            <select class="form-control mb-3" id="role" required>
+              <option value="" disabled selected>Role</option>
+              <option value="MANAGER">Manager</option>
+              <option value="FIELD_OFFICER">Field Officer</option>
+              <option value="SUPERVISOR">Supervisor</option>
+            </select>
           </div>
-            <!-- CRUD Buttons -->
-            <div class="ButtonBox">
-                <button type="button" class="btn btn-success" id="saveButton">Save</button>
-                <button type="button" class="btn btn-primary" id="updateButton">Update</button>
-                <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
-                <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
-            </div>
+          
+          <div class="ButtonBox">
+            <button type="button" class="btn btn-success" id="saveButton">Save</button>
+            <button type="button" class="btn btn-primary" id="updateButton">Update</button>
+            <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
+            <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+          </div>
         </form>
+      </div>
     </div>
-  </div>
+  </main>
+
+  <script>
+    // Toggle between table and add staff form
+    document.getElementById('toggleAddStaff').addEventListener('click', function() {
+      const tableContainer = document.getElementById('staffTableContainer');
+      const formContainer = document.getElementById('staffFormContainer');
+      
+      // Hide table and show form
+      tableContainer.style.display = 'none';
+      formContainer.style.display = 'block';
+    });
+
+    // Cancel button to return to table view
+    document.getElementById('cancelButton').addEventListener('click', function() {
+      const tableContainer = document.getElementById('staffTableContainer');
+      const formContainer = document.getElementById('staffFormContainer');
+      
+      // Hide form and show table
+      formContainer.style.display = 'none';
+      tableContainer.style.display = 'block';
+    });
+  </script>
+  
   <script src="/controller/staffController.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>
-</body>
-</html>
