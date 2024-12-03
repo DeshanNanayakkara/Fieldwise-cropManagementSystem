@@ -194,7 +194,7 @@ form{
 
         <form>
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label" >Email</label>
             <input
               type="email"
               class="form-control"
@@ -223,18 +223,16 @@ form{
               Accept Cookies
             </label>
           </div>
-          <a href="http://127.0.0.1:5501/Pages/Dashboard.html"><button type="button" class="btn btn-primary mt-3" id="signInButton">Sign In</button></a>
+          <button type="button" class="btn btn-primary mt-3" id="signInButton">Sign In</button>
           <div class="links">
             <a href="">Register</a>
           </div>
         </form>
       </div>
     </div>
-    <script>
-      // JavaScript to navigate to the staff management form
-      // document.getElementById("signInButton").addEventListener("click", function() {
-      //   window.location.href = "Dashboard.html"; // Replace with the actual URL or file name
-      // });
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/controller/loginController.js" type="module"></script>
+    
   </body>
 </html>

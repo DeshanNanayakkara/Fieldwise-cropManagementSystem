@@ -17,3 +17,17 @@ export function saveStaffMember(staffData) {
         });
     });
 }
+export function getAllStaff(){
+    return new Promise((resolve,reject) => {
+        $.ajax({
+            url:"http://localhost:8080/cropmonitor/api/v1/staff",
+            type :"GET",
+            success:(response)=>{
+                resolve(response)
+            },
+            error:(error)=> {
+                reject(error)
+            }
+        })
+    })
+} 

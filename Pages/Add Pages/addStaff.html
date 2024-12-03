@@ -4,9 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/css/staffForm.css">
+  <link rel="stylesheet" href="/css/popupForms.css">
+  <link rel="stylesheet" href="/css/controller.css">
   <title>Green Shadow Dashboard</title>
-  
+  <style>
+    /* Enhanced input field styles */
+    .form-control {
+      transition: all 0.3s ease;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    .form-control:hover {
+      border-color: #4CAF50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    }
+
+    .form-control:focus {
+      border-color: #45a049;
+      box-shadow: 0 0 8px rgba(69, 160, 73, 0.5);
+    }
+
+    .staff-form-container {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .ButtonBox {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
   <nav class="nav" id="navbar">
@@ -88,9 +133,6 @@
       <div class="search-container">
         <input type="text" class="search-input" placeholder="Search staff...">
         <button class="add-staff-btn" id="toggleAddStaff">Add Staff</button>
-        <a href="http://127.0.0.1:5501/Pages/staffManagement.html">
-          <button class="add-staff-btn" style="margin-left: 8px;">View Staff</button>
-        </a>
       </div>
     </div>
 
@@ -104,7 +146,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Position</th>
-              <th>Contact:NO</th>
+              <th>Department</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -180,6 +222,28 @@
     </div>
   </main>
 
+  <script>
+    // Toggle between table and add staff form
+    document.getElementById('toggleAddStaff').addEventListener('click', function() {
+      const tableContainer = document.getElementById('staffTableContainer');
+      const formContainer = document.getElementById('staffFormContainer');
+      
+      // Hide table and show form
+      tableContainer.style.display = 'none';
+      formContainer.style.display = 'block';
+    });
+
+    // Cancel button to return to table view
+    document.getElementById('cancelButton').addEventListener('click', function() {
+      const tableContainer = document.getElementById('staffTableContainer');
+      const formContainer = document.getElementById('staffFormContainer');
+      
+      // Hide form and show table
+      formContainer.style.display = 'none';
+      tableContainer.style.display = 'block';
+    });
+  </script>
+  
   <script src="/controller/staffController.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>

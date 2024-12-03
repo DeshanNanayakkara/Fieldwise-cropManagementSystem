@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/css/staffForm.css">
+  <link rel="stylesheet" href="/css/vehicle.css">
   <title>Green Shadow Dashboard</title>
   
 </head>
@@ -84,90 +84,55 @@
 
   <main class="content" id="content">
     <div class="HeadingBox">
-      <h1>Staff Management</h1>
+      <h1>Vehicle Management</h1>
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search staff...">
-        <button class="add-staff-btn" id="toggleAddStaff">Add Staff</button>
-        <a href="http://127.0.0.1:5501/Pages/staffManagement.html">
-          <button class="add-staff-btn" style="margin-left: 8px;">View Staff</button>
+        <input type="text" class="search-input" placeholder="Search vehicle...">
+        <button class="add-vehicle-btn" id="toggleAddVehicle">Add Vehicle</button>
+        <a href="http://127.0.0.1:5501/Pages/vehicle.html">
+          <button class="add-vehicle-btn" style="margin-left: 8px;">View Vehicle</button>
         </a>
       </div>
     </div>
 
     <!-- Container for dynamic content -->
-    <div id="staffContentContainer">
+    <div id="vehicleContentContainer">
       <!-- Staff Table -->
-      <div class="staff-table-container" id="staffTableContainer">
-        <table class="staff-table">
+      <div class="vehicle-table-container" id="vehicleTableContainer">
+        <table class="vehicle-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Position</th>
-              <th>Contact:NO</th>
-              <th>Actions</th>
+              <th>licensePlateNumber</th>
+              <th>vehicleCategory</th>
+              <th>fuelType</th>
+              <th>Status</th>
+              <th>remarks</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>John Doe</td>
-              <td>Manager</td>
-              <td>Agriculture</td>
+              <td>ABW 2323</td>
+              <td>car</td>
+              <td>petrol</td>
+              <td>cheese kallak</td>
               <td>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
               </td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Jane Smith</td>
-              <td>Field Supervisor</td>
-              <td>Crop Management</td>
-              <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
-              </td>
-            </tr>
-          </tbody>
+            </tbody>
         </table>
       </div>
 
       <!-- Staff Form Container (Initially Hidden) -->
-      <div class="staff-form-container" id="staffFormContainer" style="display: none;">
-        <form id="staffForm">
+      <div class="vehicle-form-container" id="vehicleFormContainer" style="display: none;">
+        <form id="vehicleForm">
           <div class="inputFieldBox">
-            <input type="text" class="form-control mb-3" placeholder="Staff ID" id="staffId" required>
-            <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
-            <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
-            <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
+            <input type="text" class="form-control mb-3" placeholder="licensePlateNumber" id="licensePlateNumber" required>
+            <input type="text" class="form-control mb-3" placeholder="vehicleCategory" id="vehicleCategory" required>
+            <input type="text" class="form-control mb-3" placeholder="fuelType" id="fuelType" required>
+            <input type="text" class="form-control mb-3" placeholder="Status" id="status" required>
+            <input type="text" class="form-control mb-3" placeholder="remarks" id="remarks" required>
             
-            <select class="form-control mb-3" id="gender" required>
-              <option value="" disabled selected>Gender</option>
-              <option value="MALE">Male</option>
-              <option value="FEMALE">Female</option>
-              <option value="OTHER">Other</option>
-            </select>
-            
-            <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
-            <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
-            
-            <textarea class="form-control mb-3" placeholder="Address Line 1" id="addressLine1" required></textarea>
-            <textarea class="form-control mb-3" placeholder="Address Line 2" id="addressLine2"></textarea>
-            <textarea class="form-control mb-3" placeholder="Address Line 3" id="addressLine3"></textarea>
-            <textarea class="form-control mb-3" placeholder="Address Line 4" id="addressLine4"></textarea>
-            <textarea class="form-control mb-3" placeholder="Address Line 5" id="addressLine5"></textarea>
-            
-            <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
-            <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
-
-            <select class="form-control mb-3" id="role" required>
-              <option value="" disabled selected>Role</option>
-              <option value="MANAGER">Manager</option>
-              <option value="FIELD_OFFICER">Field Officer</option>
-              <option value="SUPERVISOR">Supervisor</option>
-            </select>
-          </div>
           
           <div class="ButtonBox">
             <button type="button" class="btn btn-success" id="saveButton">Save</button>
@@ -180,6 +145,6 @@
     </div>
   </main>
 
-  <script src="/controller/staffController.js" type="module"></script>
+  <script src="/controller/vehicle.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>

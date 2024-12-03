@@ -1,4 +1,4 @@
-/* Popup styles */
+/* Popup styles
 .popup {
     position: fixed;
     top: 0;
@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-}
+} */
 .HeadingBox {
     width: 100%;
     display: grid;
@@ -18,48 +18,8 @@
     align-items: center; /* Align content vertically in the center */
     padding: 10px;
 }
-/* manage staff button */
-.edit-button{
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-}
-.ButtonBox{
-  place-content: center;
-  text-align: center;
-  width: 400px;
-  gap: 10px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-
-}
 .inputFieldBox{
   gap: 10px;
   display: grid;
   grid-template-columns: auto auto;
-}
-.popup-content {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 900px;
-    height: 80vh;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
-    text-align: center;
-}
-
-.popup-content input {
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
 }

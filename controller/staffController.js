@@ -1,4 +1,4 @@
-import { saveStaffMember } from "../Model/staffModel.js";
+import { getAllStaff, saveStaffMember } from "../Model/staffModel.js";
 $(document).ready(function () {
     const popup = $('#popup');
     const openPopup = $('#openPopup');
@@ -40,7 +40,27 @@ $(document).ready(function () {
 //       };
 //     saveStaffMember(formData);
 // })
-
+function loadTable(){
+    const table=$(".staff-table tbody")
+    table.empty()
+    getAllStaff().then((response)=>{
+        response.forEach(element => {
+            table.append(`
+                
+                <tr>
+              <td>${element.staffId}</td>
+              <td>${element.firstName}</td>
+              <td>${element.role}</td>
+              <td>${element.contactNo}</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            `)
+        });
+    })
+}
 $(document).ready(function () {
     $('#saveButton').on('click', function () {
       const formData = {
@@ -66,5 +86,27 @@ $(document).ready(function () {
           alert("Staff member saved successfully");
       })
     });
+    loadTable()
   });
+  
+   // Toggle between table and add staff form
+   document.getElementById('toggleAddStaff').addEventListener('click', function() {
+    const tableContainer = document.getElementById('staffTableContainer');
+    const formContainer = document.getElementById('staffFormContainer');
+    
+    // Hide table and show form
+    tableContainer.style.display = 'none';
+    formContainer.style.display = 'block';
+  });
+
+  // Cancel button to return to table view
+  document.getElementById('cancelButton').addEventListener('click', function() {
+    const tableContainer = document.getElementById('staffTableContainer');
+    const formContainer = document.getElementById('staffFormContainer');
+    
+    // Hide form and show table
+    formContainer.style.display = 'none';
+    tableContainer.style.display = 'block';
+  });
+
   
