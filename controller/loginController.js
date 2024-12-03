@@ -1,3 +1,4 @@
+import { saveCookie } from "../Model/tokenModel.js"
 import { login } from "../Model/userModel.js"
 
 $('#signInButton').click(function(){
@@ -8,6 +9,7 @@ $('#signInButton').click(function(){
     formData.append("password",password)
     login(formData).then((response)=>{
         alert("log una")
+        saveCookie("authToken",response.token)
     window.location="/Pages/staffManagement.html"
     }).catch((response)=>{alert("log une na")})
 })

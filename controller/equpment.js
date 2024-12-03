@@ -1,3 +1,5 @@
+import { getAllEquipment } from "../Model/equipmentModel.js";
+
  // Toggle between table and add staff form
  document.getElementById('toggleAddEquipment').addEventListener('click', function() {
   const tableContainer = document.getElementById('equipmentTableContainer');
@@ -35,4 +37,27 @@ $(document).ready(function () {
           popup.css('display', 'none'); // Close popup if clicked outside content
       }
   });
+  loadTable()
 });
+function loadTable(){
+  const table = $(".equipment-table tbody")
+  table.empty()
+  getAllEquipment().then((response)=> {
+    console.log(response)
+    response.forEach(element => {
+      table.append(
+        `
+      <tr>
+              <td>${element.equipmentId}</td>
+              <td>${element.name}</td>
+              <td>${element.type}</td>
+              <td>${element.status}</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>`
+      )
+    });
+  }).catch((error)=>{console.log(error)})
+}

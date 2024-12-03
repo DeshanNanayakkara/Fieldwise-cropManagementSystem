@@ -402,3 +402,29 @@ background-color: #d6d6d6;
 .popup-content .form-control {
   margin-bottom: 10px;
 }
+
+.form-control {
+  transition: all 0.3s ease;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-control:hover {
+  border-color: rgb(19, 77, 19);
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.form-control:focus {
+  border-color: rgb(19, 77, 19);
+  box-shadow: 0 0 8px rgba(69, 160, 73, 0.5);
+}
+
+.vehicle-form-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
