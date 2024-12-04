@@ -1,4 +1,6 @@
- // Toggle between table and add staff form
+import { getAllVehicle } from "../Model/vehicleModel.js";
+import { save } from "../Model/vehicleModel.js";
+// Toggle between table and add staff form
  document.getElementById('toggleAddVehicle').addEventListener('click', function() {
   const tableContainer = document.getElementById('vehicleTableContainer');
   const formContainer = document.getElementById('vehicleFormContainer');
@@ -34,5 +36,58 @@ $(document).ready(function () {
       if ($(event.target).is(popup)) {
           popup.css('display', 'none'); // Close popup if clicked outside content
       }
-  });
+      loadTable()
+    });
+  
+});
+function loadTable() {
+  const table = $(".vehicle-table tbody");
+  table.empty(); // Clear existing rows
+  getAllVehicle()
+    .then((response) => {
+      response.forEach((element) => {
+        table.append(`
+          <tr>
+            <td>${element.licensePlateNumber}</td>
+            <td>${element.vehicleCategory}</td>
+            <td>${element.fuelType}</td>
+            <td>${element.status}</td>
+            <td>${element.remarks}</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        `);
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading vehicle:", error);
+    });
+}
+
+
+$("#saveButton").on("click", () => {
+  let licensePlateNumber = $("#licensePlateNumber").val();
+  let vehicleCategory = $("#vehicleCategory").val();
+  let fuelType = $("#fuelType").val();
+  let status = $("#status").val();
+  let remarks =$("#remarks").val();
+  let vehicle = {
+    licensePlateNumber: licensePlateNumber,
+    vehicleCategory:vehicleCategory,
+    fuelType: fuelType,
+    status: status,
+    remarks:remarks
+  };
+
+  save(vehicle)
+    .then((response) => {
+      alert("Vehicle saved successfully!");
+      console.log("Save successful:", response);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Save error:", error);
+    });
 });

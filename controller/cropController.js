@@ -1,4 +1,4 @@
-import { getAllCrop, saveCrop } from "../Model/cropModel.js";
+import { getAllCrops, saveCrop,getCropById ,getAllCrops} from "../Model/cropModel.js";
 $(document).ready(function () {
     const popup = $('#popup');
     const openPopup = $('#openPopup');
@@ -18,97 +18,141 @@ $(document).ready(function () {
         }
     });
 });
-
-
-// $("#saveButton").on("click", () => {
-//     const formData = {
-//         staffId: $('#staffId').val(),
-//         firstName: $('#firstName').val(),
-//         lastName: $('#lastName').val(),
-//         designation: $('#designation').val(),
-//         gender: $('#gender').val(),
-//         dob: $('#dob').val(),
-//         joinedDate: $('#joinedDate').val(),
-//         addressLine01: $('#addressLine1').val(),
-//         addressLine02: $('#addressLine2').val(),
-//         addressLine03: $('#addressLine3').val(),
-//         addressLine04: $('#addressLine4').val(),
-//         addressLine05: $('#addressLine5').val(),
-//         contactNo: $('#contactNo').val(),
-//         email: $('#email').val(),
-//         role: $('#role').val()
-//       };
-//     saveStaffMember(formData);
-// })
-function loadTable(){
-    const table=$(".crop-table tbody")
-    table.empty()
-    getAllStaff().then((response)=>{
-        response.forEach(element => {
-            table.append(`
-                
-                <tr>
-              <td>${element.commonName}</td>
-              <td>${element.scientificName}</td>
-              <td>${element.category}</td>
-              <td>${element.season}</td>
-              <td>${element.fieldCode}</td>
-              <td>${element.cropImage}</td>
-              <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
-              </td>
-            </tr>
-            `)
-        });
+function loadForm(cropId) {
+  getCropById(cropId)
+    .then((cropDetails) => {
+      console.log(cropDetails);  // Check if the details are correct
+      for (const key in cropDetails) {
+        const element = document.getElementById(key);
+        if (element) {
+          element.value = cropDetails[key] || "";  // Set the value
+          element.setAttribute("readonly", "true");  // Make fields read-only
+        }
+      }
+      document.getElementById("cropPopup").style.display = "block";  // Show the form
     })
+    .catch((error) => {
+      console.error("Error fetching staff details:", error);
+      alert("Failed to load crop details.");
+    });
+    
 }
+
+
 $(document).ready(function () {
-    // $('#saveButton').on('click', function () {
-    //   const formData = {
-    //     "staffId": $('#staffForm #staffId').val(),
-    //     "firstName": $('#staffForm #firstName').val(),
-    //     "lastName": $('#staffForm #lastName').val(),
-    //     "designation": $('#staffForm #designation').val(),
-    //     "gender": $('#staffForm #gender').val(),
-    //     "joinedDate": $('#staffForm #joinedDate').val(),
-    //     "dob": $('#staffForm #dob').val(),
-    //     "addressLine01": $('#staffForm #addressLine1').val(),
-    //     "addressLine02": $('#staffForm #addressLine2').val(),
-    //     "addressLine03": $('#staffForm #addressLine3').val(),
-    //     "addressLine04": $('#staffForm #addressLine4').val(),
-    //     "addressLine05": $('#staffForm #addressLine5').val(),
-    //     "contactNo":$('#staffForm #contactNo').val(),
-    //     "email": $('#staffForm #email').val(),
-    //     "role": $('#staffForm #role').val()
-    //   }
-      
-  
-    //   saveStaffMember(formData).then(r => {
-    //       alert("Staff member saved successfully");
-    //   })
-    // });
-    loadTable()
+  $(document).ready(function () {
+    // Event listener for closing the form
+    $('#closeStaffFormButton').on('click', function () {
+        // Hide the popup form (assuming popup has id "staffPopup")
+        $('#staffPopup').css('display', 'none');
+    });
+});
+
+  // Event listener for clicking on a staff row (to show the form)
+  $(".crop-table").on("click", "tr", function () {
+      const cropId = $(this).find("td:first").text(); // Assuming staffId is in the first column
+      loadForm(cropId); // Load the form with the clicked staff details
   });
+});
+
+function loadTable() {
+  const table = $(".crop-table tbody");
+  table.empty();
+  getAllCrops().then((response) => {
+      response.forEach((element) => {
+          table.append(`
+              <tr>
+                <td>${element.commonName}</td>
+                <td>${element.scientificName}</td>
+                <td>${element.category}</td>
+                <td>${element.season}</td>
+                <td>${element.fieldCode}</td>
+                <td>
+                  <button class="edit-btn" data-id="${element.id}">Edit</button>
+                  <button class="delete-btn" data-id="${element.id}">Delete</button>
+                </td>
+              </tr>
+          `);
+      });
+  });
+}
+
+$(document).ready(function () {
+  $('#saveButton').on('click', function () {
+      const formData = new FormData();
+      formData.append("commonName", $('#commonName').val());
+      formData.append("scientificName", $('#scientificName').val());
+      formData.append("category", $('#category').val());
+      formData.append("season", $('#season').val());
+      formData.append("fieldCode", $('#fieldCode').val());
+
+      // Handle the crop image input
+      const cropImage = $('#cropImage')[0].files[0];
+      if (cropImage) {
+          formData.append("cropImage", cropImage);
+      }
+
+      saveCrop(formData).then((response) => {
+          alert("Crop saved successfully");
+          loadTable(); // Reload the table after saving
+      }).catch((error) => {
+          console.error("Error saving crop:", error);
+          alert("Failed to save crop");
+      });
+  });
+
+  // Delegate event handling for edit and delete buttons
+  $(".crop-table").on("click", ".edit-btn", function () {
+      const cropId = $(this).data("id");
+      getCropById(cropId).then((crop) => {
+          $('#commonName').val(crop.commonName);
+          $('#scientificName').val(crop.scientificName);
+          $('#category').val(crop.category);
+          $('#season').val(crop.season);
+          $('#fieldCode').val(crop.fieldCode);
+          // Handle crop image separately if needed
+          $('#cropImage').val(null); // Clear file input as it can't be prefilled
+      });
+  });
+
+  $(".crop-table").on("click", ".delete-btn", function () {
+      const cropId = $(this).data("id");
+      if (confirm("Are you sure you want to delete this crop?")) {
+          deleteCrop(cropId).then(() => {
+              alert("Crop deleted successfully");
+              loadTable(); // Reload the table after deletion
+          }).catch((error) => {
+              console.error("Error deleting crop:", error);
+              alert("Failed to delete crop");
+          });
+      }
+  });
+
+  loadTable(); // Load the crop table on page load
+});
+
   
-   // Toggle between table and add staff form
-   document.getElementById('toggleAddCrop').addEventListener('click', function() {
+  // Toggle between table and add crop form
+document.getElementById('toggleAddCrop').addEventListener('click', function() {
     const tableContainer = document.getElementById('cropTableContainer');
     const formContainer = document.getElementById('cropFormContainer');
     
     // Hide table and show form
-    // tableContainer.style.display = 'none';
+    tableContainer.style.display = 'none';
     formContainer.style.display = 'block';
-  });
+});
 
-  // Cancel button to return to table view
-  document.getElementById('cancelButton').addEventListener('click', function() {
+// Cancel button to return to table view
+document.getElementById('cancelCropButton').addEventListener('click', function() {
     const tableContainer = document.getElementById('cropTableContainer');
     const formContainer = document.getElementById('cropFormContainer');
     
     // Hide form and show table
     formContainer.style.display = 'none';
     tableContainer.style.display = 'block';
-  });
+});
+
 
   
+
+// jhsjhs

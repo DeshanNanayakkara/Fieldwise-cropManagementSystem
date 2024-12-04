@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/crop.css">
-  <title>crop-manage</title>
+  <title>Green Shadow Dashboard</title>
   
 </head>
 <body>
@@ -33,7 +33,7 @@
         </a>
       </div>
       <div class="nav-item">
-        <a href="vehicle.html">
+        <a href="vehicle-manage.html">
           <i class="fa-solid fa-truck-moving"></i>
         </a>
         <a href="vehicle.html">
@@ -41,10 +41,10 @@
         </a>
       </div>
       <div class="nav-item">
-        <a href="cropManagement.html">
+        <a href="crop-manage.html">
           <i class="fa-solid fa-seedling"></i>
         </a>
-        <a href="cropManagement.html">
+        <a href="cropManage.html">
           <span class="nav-text">Crop Manage</span>
         </a>
       </div>
@@ -89,7 +89,7 @@
         <input type="text" class="search-input" placeholder="Search crop...">
         <button class="add-crop-btn" id="toggleAddCrop">Add Crop</button>
         <a href="http://127.0.0.1:5501/Pages/cropManagement.html">
-          <button class="add-crop-btn" style="margin-left: 8px;">View Crop</button>
+          <button class="add-crop-btn" style="margin-left: 8px;">View crop</button>
         </a>
       </div>
     </div>
@@ -97,31 +97,70 @@
     <!-- Container for dynamic content -->
     <div id="cropContentContainer">
       <!-- Staff Table -->
-      <div class="staff-table-container" id="staffTableContainer">
-        <div class="crop-load-container">
-          <h1>jsjs</h1>
-          <h1>jsjslorem100 lorem400</h1>
-          <h1>jsjs</h1>
-        </div>
+      <div class="crop-table-container" id="cropTableContainer">
+        <table class="crop-table">
+          <thead>
+            <tr>
+              <th>commonName</th>
+              <th>scientificName</th>
+              <th>category</th>
+              <th>season</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>makchjokka</td>
+              <td>mkscermaruutha</td>
+              <td>ala</td>
+              <td>hamadama</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
       </div>
+      <div id="cropPopup" class="C-popup">
+  <div class="C-popup-content">
+        <form id="cropDetailsForm">
+          <input type="text" id="staffId" readonly />
+          <input type="text" id="firstName" readonly />
+          <input type="text" id="lastName" readonly />
+          <input type="text" id="designation" readonly />
+          <input type="text" id="gender" readonly />
+          <input type="text" id="dob" readonly />
+          <input type="text" id="addressLine1" readonly />
+          <input type="text" id="addressLine2" readonly />
+          <input type="text" id="addressLine3" readonly />
+          <input type="text" id="addressLine4" readonly />
+          <input type="text" id="addressLine5" readonly />
+          <input type="text" id="contactNo" readonly />
+          <input type="text" id="email" readonly />
+          <input type="text" id="role" readonly />
+
+    </form>
+    <button type="button" id="closeCropFormButton" class="C-btn-close">Back</button>
+
+  </div>
+</div>
 
       <!-- Staff Form Container (Initially Hidden) -->
       <div class="crop-form-container" id="cropFormContainer" style="display: none;">
         <form id="cropForm">
           <div class="inputFieldBox">
-            <input type="text" class="form-control mb-3" placeholder="Common name" id="commonName" required>
-            <input type="text" class="form-control mb-3" placeholder="scientificName" id="scientificName" required>
+            <input type="text" class="form-control mb-3" placeholder="Crop Common Name" id="commonName" required>
+            <input type="text" class="form-control mb-3" placeholder="Crop's scientific Name" id="scientificName" required>
             <input type="text" class="form-control mb-3" placeholder="category" id="category" required>
-            <input type="text" class="form-control mb-3" placeholder="field-code" id="fieldCode" required>
-            
-            <select class="form-control mb-3" id="season" required>
-              <option value="" disabled selected>SEASON</option>
-              <option value="awwa">awwa</option>
-              <option value="wassa">wassa</option>
-            </select>
-            
-          
-          
+            <input type="text" class="form-control mb-3" placeholder="season" id="season" required>
+            <input type="text" class="form-control mb-3" placeholder="fieldCode" id="fieldCode" required>
+            <div class="form-group">
+    <label for="cropImage">Upload Crop Image</label>
+    <input type="file" class="form-control-file" id="cropImage" accept="image/*" required>
+</div>
+
           <div class="ButtonBox">
             <button type="button" class="btn btn-success" id="saveButton">Save</button>
             <button type="button" class="btn btn-primary" id="updateButton">Update</button>
@@ -131,6 +170,9 @@
         </form>
       </div>
     </div>
+    <!-- popuo0 -->
+     
+     <!-- liskls -->
   </main>
 
   <script src="/controller/cropController.js" type="module"></script>
