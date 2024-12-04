@@ -1,4 +1,4 @@
-import { getAllStaff, saveStaffMember } from "../Model/staffModel.js";
+import { getAllStaff, saveStaffMember,getStaffById } from "../Model/staffModel.js";
 $(document).ready(function () {
     const popup = $('#popup');
     const openPopup = $('#openPopup');
@@ -18,6 +18,43 @@ $(document).ready(function () {
         }
     });
 });
+function loadForm(staffId) {
+  getStaffById(staffId)
+    .then((staffDetails) => {
+      console.log(staffDetails);  // Check if the details are correct
+      for (const key in staffDetails) {
+        const element = document.getElementById(key);
+        if (element) {
+          element.value = staffDetails[key] || "";  // Set the value
+          element.setAttribute("readonly", "true");  // Make fields read-only
+        }
+      }
+      document.getElementById("staffPopup").style.display = "block";  // Show the form
+    })
+    .catch((error) => {
+      console.error("Error fetching staff details:", error);
+      alert("Failed to load staff details.");
+    });
+    
+}
+
+
+$(document).ready(function () {
+  $(document).ready(function () {
+    // Event listener for closing the form
+    $('#closeStaffFormButton').on('click', function () {
+        // Hide the popup form (assuming popup has id "staffPopup")
+        $('#staffPopup').css('display', 'none');
+    });
+});
+
+  // Event listener for clicking on a staff row (to show the form)
+  $(".staff-table").on("click", "tr", function () {
+      const staffId = $(this).find("td:first").text(); // Assuming staffId is in the first column
+      loadForm(staffId); // Load the form with the clicked staff details
+  });
+});
+
 
 
 // $("#saveButton").on("click", () => {
@@ -110,3 +147,5 @@ $(document).ready(function () {
   });
 
   
+
+// jhsjhs

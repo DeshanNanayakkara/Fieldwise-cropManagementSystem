@@ -1,4 +1,5 @@
 import { getAllEquipment } from "../Model/equipmentModel.js";
+import { save } from "../Model/equipmentModel.js";
 
  // Toggle between table and add staff form
  document.getElementById('toggleAddEquipment').addEventListener('click', function() {
@@ -39,25 +40,48 @@ $(document).ready(function () {
   });
   loadTable()
 });
-function loadTable(){
-  const table = $(".equipment-table tbody")
-  table.empty()
-  getAllEquipment().then((response)=> {
-    console.log(response)
-    response.forEach(element => {
-      table.append(
-        `
-      <tr>
-              <td>${element.equipmentId}</td>
-              <td>${element.name}</td>
-              <td>${element.type}</td>
-              <td>${element.status}</td>
-              <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
-              </td>
-            </tr>`
-      )
+function loadTable() {
+  const table = $(".equipment-table tbody");
+  table.empty(); // Clear existing rows
+  getAllEquipment()
+    .then((response) => {
+      response.forEach((element) => {
+        table.append(`
+          <tr>
+            <td>${element.equipmentId}</td>
+            <td>${element.name}</td>
+            <td>${element.type}</td>
+            <td>${element.status}</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn">Delete</button>
+            </td>
+          </tr>
+        `);
+      });
+    })
+    .catch((error) => {
+      console.error("Error loading equipment:", error);
     });
-  }).catch((error)=>{console.log(error)})
 }
+
+
+$("#saveButton").on("click", () => {
+  let equipmentName = $("#name").val();
+  let equipmentType = $("#type").val();
+  let equipment = {
+    name: equipmentName,
+    equipmentType: equipmentType,
+    status: "Available",
+  };
+
+  save(equipment)
+    .then((response) => {
+      alert("Equipment saved successfully!");
+      console.log("Save successful:", response);
+      location.reload();
+    })
+    .catch((error) => {
+      console.error("Save error:", error);
+    });
+});

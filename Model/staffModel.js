@@ -31,3 +31,18 @@ export function getAllStaff(){
         })
     })
 } 
+
+export function getStaffById(staffId) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `http://localhost:8080/cropmonitor/api/v1/staff/${staffId}`,
+            type: "GET",
+            success: (response) => {
+                resolve(response);
+            },
+            error: (error) => {
+                reject(error);
+            },
+        });
+    });
+}

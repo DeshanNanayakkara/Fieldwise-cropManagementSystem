@@ -403,3 +403,78 @@
     margin-bottom: 10px;
   }
   
+
+  /*  */
+  /* Popup overlay */
+.S-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Popup content box */
+.S-popup-content {
+  background-color: #fff;
+  /* padding: 50px; */
+  border-radius: 8px;
+  text-align: center;
+  width: 800px;
+  max-width: 90%;
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/
+/* Staff form container */
+#staffFormContainer {
+  display: none; /* Hide by default */
+}
+/* Form styles */
+#staffDetailsForm label {
+  display: block;
+  font-weight: bold;
+}
+#staffDetailsForm{
+  display: grid;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  grid-template-columns: 380px 380px;
+  gap: 10px;
+}
+#staffDetailsForm input {
+  
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Button styling */
+.S-btn-close {
+  background-color: #f44336;  /* Red */
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Change color on hover */
+.S-btn-close:hover {
+  background-color: #d32f2f;
+}
+
