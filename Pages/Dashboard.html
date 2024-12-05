@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/css/popupForms.css">
-  <link rel="stylesheet" href="/css/controller.css">
+  <link rel="stylesheet" href="/css/vehicle.css">
   <title>Green Shadow Dashboard</title>
+  
 </head>
 <body>
   <nav class="nav" id="navbar">
@@ -16,52 +16,128 @@
     </div>
 
     <div class="nav-secondgrid">
-      <div class="nav-item">
-        <a href="Dashboard.html">
+      <a href="Dashboard.html">
+        <div class="nav-item">
           <i class="fa-solid fa-house"></i>
-        </a>
-        <a href="Dashboard.html">
           <span class="nav-text">Dashboard</span>
-        </a>
       </div>
-      <div class="nav-item">
-        <a href="staffManagement.html">
+      </a>
+      
+      <a href="staffManagement.html">
+        <div class="nav-item">
           <i class="fa-solid fa-users-line"></i>
-        </a>
-        <a href="staffManagement.html">
-          <span class="nav-text">Staff Manage</span>
-        </a>
+            <span class="nav-text">Staff Manage</span>
+        </div>
+      </a>
+      
+      <a href="vehicle.html">
+        <div class="nav-item">
+          <i class="fa-solid fa-truck-moving"></i>
+          <span class="nav-text">Vehicle Manage</span>
       </div>
-      <div class="nav-item">
-        <i class="fa-solid fa-truck-moving"></i>
-        <span class="nav-text">Vehicle Manage</span>
+      </a>
+      
+      <a href="cropManagement.html">
+        <div class="nav-item">
+          <i class="fa-solid fa-seedling"></i>
+          <span class="nav-text">Crop Manage</span>
       </div>
-      <div class="nav-item">
-        <i class="fa-solid fa-seedling"></i>
-        <span class="nav-text">Crop Manage</span>
+      </a>
+      
+       <a href="vehicle.html"><!-- #field -->
+        <div class="nav-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span class="nav-text">Field Manage</span>
       </div>
-      <div class="nav-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <span class="nav-text">Field Manage</span>
+      </a>
+      
+      <a href="vehicle.html"> <!-- #monitorin logs -->
+        <div class="nav-item">
+          <i class="fa-solid fa-seedling"></i>
+          <span class="nav-text">Monitoring Logs</span>
       </div>
-      <div class="nav-item">
-        <i class="fa-solid fa-seedling"></i>
-        <span class="nav-text">Crop Manage</span>
+      </a>
+      
+      <a href="equipment.html">
+        <div class="nav-item">
+          <i class="fa-solid fa-toolbox"></i>
+          <span class="nav-text">Equipment</span>
       </div>
-      <div class="nav-item">
-        <i class="fa-solid fa-toolbox"></i>
-        <span class="nav-text">Equipment</span>
-      </div>
+      </a>
+      
     </div>
+    
 
     <div class="nav-thirdgrid">
       <a href="http://127.0.0.1:5501/index.html">
         <i class="fa-solid fa-right-from-bracket"></i>
       </a>
     </div>
-    
   </nav>
 
+  <main class="content" id="content">
+    <div class="HeadingBox">
+      <h1>Vehicle Management</h1>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search vehicle...">
+        <button class="add-vehicle-btn" id="toggleAddVehicle">Add Vehicle</button>
+        <a href="http://127.0.0.1:5501/Pages/vehicle.html">
+          <button class="add-vehicle-btn" style="margin-left: 8px;">View Vehicle</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Container for dynamic content -->
+    <div id="vehicleContentContainer">
+      <!-- Staff Table -->
+      <div class="vehicle-table-container" id="vehicleTableContainer">
+        <table class="vehicle-table">
+          <thead>
+            <tr>
+              <th>licensePlateNumber</th>
+              <th>vehicleCategory</th>
+              <th>fuelType</th>
+              <th>Status</th>
+              <th>remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ABW 2323</td>
+              <td>car</td>
+              <td>petrol</td>
+              <td>cheese kallak</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+
+      <!-- Staff Form Container (Initially Hidden) -->
+      <div class="vehicle-form-container" id="vehicleFormContainer" style="display: none;">
+        <form id="vehicleForm">
+          <div class="inputFieldBox">
+            <input type="text" class="form-control mb-3" placeholder="licensePlateNumber" id="licensePlateNumber" required>
+            <input type="text" class="form-control mb-3" placeholder="vehicleCategory" id="vehicleCategory" required>
+            <input type="text" class="form-control mb-3" placeholder="fuelType" id="fuelType" required>
+            <input type="text" class="form-control mb-3" placeholder="Status" id="status" required>
+            <input type="text" class="form-control mb-3" placeholder="remarks" id="remarks" required>
+            
+          
+          <div class="ButtonBox">
+            <button type="button" class="btn btn-success" id="saveButton">Save</button>
+            <button type="button" class="btn btn-primary" id="updateButton">Update</button>
+            <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
+            <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="/controller/vehicle.js" type="module"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>
-</body>
-</html>

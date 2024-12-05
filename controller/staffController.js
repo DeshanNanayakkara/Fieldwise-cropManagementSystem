@@ -226,8 +226,10 @@ $(".staff-table tbody").on("click", ".edit-btn", function () {
     $("#staffFormContainer #lastName").val(response.lastName)
     $("#staffFormContainer #designation").val(response.designation)
     $("#staffFormContainer #gender").val(response.gender)
-    $("#staffFormContainer #dob").val(convertAndSetDate(response.dob))
-    $("#staffFormContainer #joinedDate").val(convertAndSetDate(response.joinedDate))
+    const formattedDob = new Date(response.dob).toISOString().split("T")[0];
+    $("#staffFormContainer #dob").val(formattedDob)
+    const joinedDate = new Date(response.joinedDate).toISOString().split("T")[0];
+    $("#staffFormContainer #joinedDate").val(joinedDate)
     $("#staffFormContainer #addressLine1").val(response.addressLine01)
     $("#staffFormContainer #addressLine2").val(response.addressLine02)
     $("#staffFormContainer #addressLine3").val(response.addressLine03)
@@ -267,16 +269,28 @@ $("#updateButton").click(function(){
     console.error(error);
 });
 })  
-function convertAndSetDate(inputId, dateString) {
-  // Convert from dd-MM-yyyy to yyyy-MM-dd
-  const dateParts = dateString.split('-');
-  const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // Convert to yyyy-MM-dd
+// function convertAndSetDate(inputId, dateString) {
+//   // Convert from dd-MM-yyyy to yyyy-MM-dd
+//   const dateParts = dateString.split('-');
+//   const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // Convert to yyyy-MM-dd
 
-  // Set the date on the input
-  document.getElementById(inputId).value = formattedDate;
-}
+//   // Set the date on the input
+//   document.getElementById(inputId).value = formattedDate;
+// }
 
-// Example usage
-const date = "15-01-2020";  // dd-MM-yyyy format
-convertAndSetDate('myDateInput', date);
+// // Example usage
+// const date = "15-01-2020";  // dd-MM-yyyy format
+// convertAndSetDate('myDateInput', date);
 
+$("#search-staff").on("keyup",function(){
+  var searchValue=$(this).val()
+  $(".staff-table tbody > tr").each(function(){
+    const staffId = $(this).children(":nth-child(1)").text()
+    if(staffId.includes(searchValue)){
+      $(this).show()
+
+    }else{
+      $(this).hide()
+    }
+  })
+})

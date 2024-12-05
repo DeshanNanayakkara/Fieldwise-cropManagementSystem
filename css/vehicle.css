@@ -18,6 +18,9 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+a {
+  text-decoration: none;
+}
 
 .HeadingBox {
   width: 100%;
@@ -35,7 +38,7 @@ body {
 .nav {
   width: 250px;
   background-image: 
-    linear-gradient(rgba(0, 75, 4, 0.795), rgba(0, 0, 0, 0.925)), 
+  linear-gradient(rgba(0, 75, 4, 0.863), rgba(0, 0, 0, 0.938)), 
     url('/Assests/Images/Frame\ 9.png');
   background-size: cover;
   background-position: center;

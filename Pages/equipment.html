@@ -16,62 +16,55 @@
     </div>
 
     <div class="nav-secondgrid">
-      <div class="nav-item">
-        <a href="Dashboard.html">
+      <a href="Dashboard.html">
+        <div class="nav-item">
           <i class="fa-solid fa-house"></i>
-        </a>
-        <a href="Dashboard.html">
           <span class="nav-text">Dashboard</span>
-        </a>
       </div>
-      <div class="nav-item">
-        <a href="staffManagement.html">
+      </a>
+      
+      <a href="staffManagement.html">
+        <div class="nav-item">
           <i class="fa-solid fa-users-line"></i>
-        </a>
-        <a href="staffManagement.html">
-          <span class="nav-text">Staff Manage</span>
-        </a>
-      </div>
-      <div class="nav-item">
-        <a href="vehicle-manage.html">
+            <span class="nav-text">Staff Manage</span>
+        </div>
+      </a>
+      
+      <a href="vehicle.html">
+        <div class="nav-item">
           <i class="fa-solid fa-truck-moving"></i>
-        </a>
-        <a href="vehicle.html">
           <span class="nav-text">Vehicle Manage</span>
-        </a>
       </div>
-      <div class="nav-item">
-        <a href="crop-manage.html">
+      </a>
+      
+      <a href="cropManagement.html">
+        <div class="nav-item">
           <i class="fa-solid fa-seedling"></i>
-        </a>
-        <a href="cropManage.html">
           <span class="nav-text">Crop Manage</span>
-        </a>
       </div>
-      <div class="nav-item">
-        <a href="field-manage.html">
+      </a>
+      
+       <a href="vehicle.html"><!-- #field -->
+        <div class="nav-item">
           <i class="fa-solid fa-location-dot"></i>
-        </a>
-        <a href="field-manage.html">
           <span class="nav-text">Field Manage</span>
-        </a>
       </div>
-      <div class="nav-item">
-        <a href="crop-manage.html">
+      </a>
+      
+      <a href="vehicle.html"> <!-- #monitorin logs -->
+        <div class="nav-item">
           <i class="fa-solid fa-seedling"></i>
-        </a>
-        <a href="crop-manage.html">
-          <span class="nav-text">Crop Manage</span>
-        </a>
+          <span class="nav-text">Monitoring Logs</span>
       </div>
-      <div class="nav-item">
-        <a href="equipment.html">
+      </a>
+      
+      <a href="equipment.html">
+        <div class="nav-item">
           <i class="fa-solid fa-toolbox"></i>
-        </a>
-        <a href="equipment.html">
           <span class="nav-text">Equipment</span>
-        </a>
       </div>
+      </a>
+      
     </div>
     
 
@@ -160,7 +153,11 @@
           <div class="inputFieldBox">
             <input type="text" class="form-control mb-3" placeholder="Equipment Name" id="name" required>
             <input type="text" class="form-control mb-3" placeholder="Equipment Type" id="type" required>
-            <input type="text" class="form-control mb-3" placeholder="Status" id="status" required>
+            <select class="form-control mb-3" id="status" required>
+              <option value="" disabled selected>status</option>
+              <option value="Available">Available</option>
+              <option value="Not_Available">Not_Available</option>
+            </select>
             
             
           

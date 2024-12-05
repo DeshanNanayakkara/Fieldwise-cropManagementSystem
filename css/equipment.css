@@ -35,7 +35,7 @@ body {
 .nav {
   width: 250px;
   background-image: 
-    linear-gradient(rgba(0, 75, 4, 0.795), rgba(0, 0, 0, 0.925)), 
+    linear-gradient(rgba(0, 75, 4, 0.863), rgba(0, 0, 0, 0.938)), 
     url('/Assests/Images/Frame\ 9.png');
   background-size: cover;
   background-position: center;
@@ -498,6 +498,9 @@ background-color: #d6d6d6;
   /* Change color on hover */
   .E-btn-close:hover {
     background-color: #d32f2f;
+  }
+  a {
+    text-decoration: none;
   }
   
   
