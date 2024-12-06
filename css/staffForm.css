@@ -21,10 +21,10 @@
   }
 
   .HeadingBox {
-    background-color: #bff7d2;
-    height: 100px;
+    background-color: #bff7d200;
     width: 100%;
     display: grid;
+    margin-bottom: 30px;
     grid-template-columns: 1fr auto; /* Divide space: h1 takes max available space, search-container auto-adjusts */
     align-items: center; /* Align content vertically in the center */
     padding: 10px;
@@ -77,9 +77,6 @@
 }
 
 .staff-form-container {
-  /* background-color: #ffffff; */
-  
-  background: linear-gradient(to right, green, white);
   padding: 20px;
   border-radius: 8px;
   margin-top: 20px;
@@ -180,6 +177,7 @@
 
   .content {
     flex-grow: 1;
+    
     /* background-color: var(--background-color);
      */
      
