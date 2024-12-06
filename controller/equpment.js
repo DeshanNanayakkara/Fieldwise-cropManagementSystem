@@ -1,4 +1,4 @@
-import { getAllEquipment, save, getEquipmentById } from "../Model/equipmentModel.js";
+import { getAllEquipment, save, getEquipmentById ,updateEquipment,deleteEquipment} from "../Model/equipmentModel.js";
 import { getCookie } from "../Model/tokenModel.js";
 
 // Toggle between table and add equipment form
@@ -99,33 +99,94 @@ $("#saveButton").on("click", () => {
       });
 });
 
-// Load form with equipment details when editing
-function loadForm(equipmentId) {
+/// Load equipment form for editing
+$(".equipment-table").on("click", ".edit-btn", function () {
+  const equipmentId = $(this).data("id");
+
+  // Clear existing form state to avoid conflicts
+  $("#name").val("");
+  $("#type").val("");
+  $("#status").val("");
+  $("#name, #type, #status").removeAttr("readonly");
+
   getEquipmentById(equipmentId)
     .then((equipmentDetails) => {
-      console.log(equipmentDetails);  // Check if the details are correct
-      for (const key in equipmentDetails) {
-        const element = document.getElementById(key);
-        if (element) {
-          element.value = equipmentDetails[key] || "";  // Set the value
-          element.setAttribute("readonly", "true");  // Make fields read-only
-        }
-      }
-      document.getElementById("equipmentPopup").style.display = "block";  // Show the form
+      // Populate the form fields with the fetched equipment details 
+      $("#equipmentId").val(equipmentDetails.equipmentId);
+      $("#name").val(equipmentDetails.name);
+      $("#type").val(equipmentDetails.type);
+      $("#status").val(equipmentDetails.status);
+
+      // Show the form container and hide the table container
+      const tableContainer = document.getElementById("equipmentTableContainer");
+      const formContainer = document.getElementById("equipmentFormContainer");
+      tableContainer.style.display = "none";
+      formContainer.style.display = "block";
+
+      // Show "Update" button and hide "Save" button
+      $("#saveButton").hide();
+      $("#updateButton").show().data("id", equipmentId);
     })
     .catch((error) => {
-      console.error("Error fetching equipment details:", error);
+      console.error("Error loading equipment for editing:", error);
       alert("Failed to load equipment details.");
     });
-}
-
-// Event listener for closing the equipment form
-$('#closeEquipmentFormButton').on('click', function () {
-    $('#equipmentPopup').css('display', 'none');  // Hide the form
 });
 
-// Event listener for clicking on an equipment row (to show the form for editing)
-$(".equipment-table").on("click", "tr", function () {
-    const equipmentId = $(this).find("td:first").text(); // Get the equipment ID from the first column
-    loadForm(equipmentId); // Load the form with the clicked equipment details
+/// Update equipment on clicking "Update" button
+$("#updateButton").on("click", function () {
+  const equipmentId = $(this).data("id"); // Get the equipment ID
+  const updatedEquipment = {
+    name: $("#name").val(),
+    type: $("#type").val(),
+    status: $("#status").val(),
+  };
+
+  if (!updatedEquipment.name || !updatedEquipment.type || !updatedEquipment.status) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  updateEquipment(equipmentId, updatedEquipment)
+    .then(() => {
+      alert("Equipment updated successfully!");
+      loadTable(); // Refresh the table with updated data
+      // Navigate back to the table view
+      const tableContainer = document.getElementById("equipmentTableContainer");
+      const formContainer = document.getElementById("equipmentFormContainer");
+      formContainer.style.display = "none";
+      tableContainer.style.display = "block";
+    })
+    .catch((error) => {
+      console.error("Update error:", error);
+      alert("Failed to update equipment.");
+    });
 });
+
+$(document).on("click", ".delete-btn", function () {
+  const equipmentId = $(this).data("id"); // Extract equipment ID from button's data attribute
+
+  if (confirm(`Are you sure you want to delete equipment with ID: ${equipmentId}?`)) {
+      deleteEquipment(equipmentId) // Call the model function
+          .then(() => {
+              alert("Equipment deleted successfully!");
+              loadTable(); // Reload the table to reflect changes
+          })
+          .catch((error) => {
+              console.error("Error deleting equipment:", error);
+              alert("Failed to delete equipment. Please try again.");
+          });
+  }
+});
+$("#search-equipment").on("keyup",function(){
+  var searchValue=$(this).val()
+  $(".equipment-table tbody > tr").each(function(){
+    const equipmentId = $(this).children(":nth-child(1)").text()
+    if(equipmentId.includes(searchValue)){
+      $(this).show()
+
+    }else{
+      $(this).hide()
+    }
+  })
+})
