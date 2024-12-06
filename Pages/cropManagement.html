@@ -4,8 +4,105 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/css/crop.css">
+  <link rel="stylesheet" href="/css/staffForm.css">
   <title>Green Shadow Dashboard</title>
+  <style>
+    .crop-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .crop-popup-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 800px;
+            max-width: 95%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .crop-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .crop-details {
+            padding: 30px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .crop-details h2 {
+            color: #07301a;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #339966;
+            padding-bottom: 10px;
+        }
+
+        .crop-detail-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .crop-detail-row i {
+            color: #339966;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #07301a;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #339966;
+        }
+
+        @media screen and (max-width: 768px) {
+            .crop-popup-content {
+                grid-template-columns: 1fr;
+            }
+
+            .crop-image {
+                height: 300px;
+            }
+        }
+  </style>
   
 </head>
 <body>
@@ -88,85 +185,54 @@
     </div>
 
     <!-- Container for dynamic content -->
-    <div id="cropContentContainer">
-      <!-- Staff Table -->
-      <div class="crop-table-container" id="cropTableContainer">
-        <table class="crop-table">
-          <thead>
-            <tr>
-              <th>commonName</th>
-              <th>scientificName</th>
-              <th>category</th>
-              <th>season</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>makchjokka</td>
-              <td>mkscermaruutha</td>
-              <td>ala</td>
-              <td>hamadama</td>
-              <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-      <div id="cropPopup" class="C-popup">
-  <div class="C-popup-content">
-        <form id="cropDetailsForm">
-          <input type="text" id="staffId" readonly />
-          <input type="text" id="firstName" readonly />
-          <input type="text" id="lastName" readonly />
-          <input type="text" id="designation" readonly />
-          <input type="text" id="gender" readonly />
-          <input type="text" id="dob" readonly />
-          <input type="text" id="addressLine1" readonly />
-          <input type="text" id="addressLine2" readonly />
-          <input type="text" id="addressLine3" readonly />
-          <input type="text" id="addressLine4" readonly />
-          <input type="text" id="addressLine5" readonly />
-          <input type="text" id="contactNo" readonly />
-          <input type="text" id="email" readonly />
-          <input type="text" id="role" readonly />
-
-    </form>
-    <button type="button" id="closeCropFormButton" class="C-btn-close">Back</button>
-
-  </div>
-</div>
-
-      <!-- Staff Form Container (Initially Hidden) -->
-      <div class="crop-form-container" id="cropFormContainer" style="display: none;">
-        <form id="cropForm">
-          <div class="inputFieldBox">
-            <input type="text" class="form-control mb-3" placeholder="Crop Common Name" id="commonName" required>
-            <input type="text" class="form-control mb-3" placeholder="Crop's scientific Name" id="scientificName" required>
-            <input type="text" class="form-control mb-3" placeholder="category" id="category" required>
-            <input type="text" class="form-control mb-3" placeholder="season" id="season" required>
-            <input type="text" class="form-control mb-3" placeholder="fieldCode" id="fieldCode" required>
-            <div class="form-group">
-    <label for="cropImage">Upload Crop Image</label>
-    <input type="file" class="form-control-file" id="cropImage" accept="image/*" required>
-</div>
-
-          <div class="ButtonBox">
-            <button type="button" class="btn btn-success" id="saveButton">Save</button>
-            <button type="button" class="btn btn-primary" id="updateButton">Update</button>
-            <button type="button" class="btn btn-danger" id="deleteButton">Delete</button>
-            <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+    <div class="crop-popup">
+      <button class="close-btn">&times;</button>
+      <div class="crop-popup-content">
+          <img src="/path/to/crop-image.jpg" alt="Crop Image" class="crop-image">
+          <div class="crop-details">
+              <h2>Wheat</h2>
+              <div class="crop-detail-row">
+                  <i class="fas fa-seedling"></i>
+                  <strong>Scientific Name:</strong> Triticum aestivum
+              </div>
+              <div class="crop-detail-row">
+                  <i class="fas fa-tag"></i>
+                  <strong>Category:</strong> Grain Crop
+              </div>
+              <div class="crop-detail-row">
+                  <i class="fas fa-location-dot"></i>
+                  <strong>Field Code:</strong> FLD-NORTH-01
+              </div>
+              <div class="crop-detail-row">
+                  <i class="fas fa-calendar"></i>
+                  <strong>Planting Date:</strong> September 15, 2023
+              </div>
+              <div class="crop-detail-row">
+                  <i class="fas fa-ruler"></i>
+                  <strong>Expected Yield:</strong> 4.5 tons/hectare
+              </div>
+              <div class="crop-detail-row">
+                  <i class="fas fa-info-circle"></i>
+                  <strong>Additional Notes:</strong> Winter wheat variety
+              </div>
           </div>
-        </form>
       </div>
+  </div>
     </div>
     <!-- popuo0 -->
      
      <!-- liskls -->
   </main>
+  <script>document.querySelector('.close-btn').addEventListener('click', function() {
+    document.querySelector('.crop-popup').style.display = 'none';
+});
+
+// Optional: Close popup when clicking outside the content
+document.querySelector('.crop-popup').addEventListener('click', function(event) {
+    if (event.target === this) {
+        this.style.display = 'none';
+    }
+});</script>
 
   <script src="/controller/cropController.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

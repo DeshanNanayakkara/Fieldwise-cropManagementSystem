@@ -1,10 +1,11 @@
 :root {
-  --primary-color: rgba(19, 77, 19, 0.719);
-  --secondary-color: rgb(19, 77, 19);
+  --primary-color: #07301a;
+  --secondary-color: #339966;
   --text-color: #333;
   --background-color: #f4f4f4;
   --hover-color: #e0e0e0;
 }
+
 
 * {
   margin: 0;
@@ -21,6 +22,7 @@ body {
 
 .HeadingBox {
   width: 100%;
+  margin-bottom: 30px;
   display: grid;
   grid-template-columns: 1fr auto; /* Divide space: h1 takes max available space, search-container auto-adjusts */
   align-items: center; /* Align content vertically in the center */
@@ -34,9 +36,8 @@ body {
 
 .nav {
   width: 250px;
-  background-image: 
-    linear-gradient(rgba(0, 75, 4, 0.863), rgba(0, 0, 0, 0.938)), 
-    url('/Assests/Images/Frame\ 9.png');
+
+  background-color: #07301a;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -174,10 +175,10 @@ background-color: #d6d6d6;
 
 .content {
   flex-grow: 1;
-  background-color: var(--background-color);
-  overflow-y: auto;
-  padding: 20px;
-  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to top, #caffe6, white);
+    overflow-y: auto;
+    padding: 60px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Equipment Management Styles */
@@ -314,7 +315,7 @@ background-color: #d6d6d6;
   transition: background-color 0.3s ease;
 }
 .equipment-table th {
-  background-color: rgb(19, 77, 19);
+  background-color: #339966;
   color: white;
 }
 .edit-btn {

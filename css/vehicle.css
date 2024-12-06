@@ -1,6 +1,6 @@
 :root {
-  --primary-color: rgba(19, 77, 19, 0.719);
-  --secondary-color: rgb(19, 77, 19);
+  --primary-color: #07301a;
+  --secondary-color: #339966;
   --text-color: #333;
   --background-color: #f4f4f4;
   --hover-color: #e0e0e0;
@@ -22,6 +22,8 @@ body {
 .HeadingBox {
   width: 100%;
   display: grid;
+
+  margin-bottom: 30px;
   grid-template-columns: 1fr auto; /* Divide space: h1 takes max available space, search-container auto-adjusts */
   align-items: center; /* Align content vertically in the center */
   padding: 10px;
@@ -34,12 +36,7 @@ body {
 
 .nav {
   width: 250px;
-  background-image: 
-    linear-gradient(rgba(0, 75, 4, 0.863), rgba(0, 0, 0, 0.938)), 
-    url('/Assests/Images/Frame\ 9.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: #07301a;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease-in-out;
@@ -174,10 +171,10 @@ background-color: #d6d6d6;
 
 .content {
   flex-grow: 1;
-  background-color: var(--background-color);
-  overflow-y: auto;
-  padding: 20px;
-  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to top, #caffe6, white);
+    overflow-y: auto;
+    padding: 60px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Equipment Management Styles */
@@ -283,12 +280,12 @@ background-color: #d6d6d6;
 }
 
 
-
 .vehicle-table {
-  width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
   background-color: #ddd;
+  table-layout: fixed; /* Ensures consistent column widths */
+  width: 73vw;
 }
 
 .vehicle-table th, 
@@ -296,7 +293,22 @@ background-color: #d6d6d6;
   padding: 10px;
   text-align: left;
   border: 1px solid #ffffff;
+
+  /* New properties to ensure single-line text */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden;    /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
 }
+
+.vehicle-table th:first-child, 
+.vehicle-table td:first-child {
+  width: 150px; /* Set the first column width */
+}
+
+.vehicle-table th {
+  background-color: #f4f4f4; /* Header background color */
+}
+
 
 .action-buttons {
   display: flex;
@@ -314,7 +326,8 @@ background-color: #d6d6d6;
   transition: background-color 0.3s ease;
 }
 .vehicle-table th {
-  background-color: rgb(19, 77, 19);
+  
+  background-color: #339966;
   color: white;
 }
 .edit-btn {
@@ -426,46 +439,18 @@ background-color: #d6d6d6;
 .popup-content .form-control {
   margin-bottom: 10px;
 }
-/*  */
-  /* Popup overlay */
-  .E-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Popup content box */
-  .E-popup-content {
-    background-color: #fff;
-    /* padding: 50px; */
-    border-radius: 8px;
-    text-align: center;
-    width: 800px;
-    max-width: 90%;
-    position: fixed;
-    top: 50px;
-    right: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+
   
   /* Staff form container */
-  #equipmentFormContainer {
+  #vehicleFormContainer {
     display: none; /* Hide by default */
   }
   /* Form styles */
-  #equipmentDetailsForm label {
+  #vehicleDetailsForm label {
     display: block;
     font-weight: bold;
   }
-  #equipmentDetailsForm{
+  #vehicleDetailsForm{
     display: grid;
     padding-left: 15px;
     padding-top: 15px;
@@ -473,7 +458,7 @@ background-color: #d6d6d6;
     grid-template-columns: 380px 380px;
     gap: 10px;
   }
-  #equipmentDetailsForm input {
+  #vehicleDetailsForm input {
     
     padding: 5px;
     width: 100%;
@@ -483,7 +468,7 @@ background-color: #d6d6d6;
   }
   
   /* Button styling */
-  .E-btn-close {
+  .V-btn-close {
     background-color: #f44336;  /* Red */
     color: white;
     padding: 10px;
@@ -496,7 +481,7 @@ background-color: #d6d6d6;
   }
   
   /* Change color on hover */
-  .E-btn-close:hover {
+  .V-btn-close:hover {
     background-color: #d32f2f;
   }
   a {
