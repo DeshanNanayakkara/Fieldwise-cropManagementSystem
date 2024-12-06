@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/css/vehicle.css">
+  <link rel="stylesheet" href="/css/equipment.css">
   <title>Green Shadow Dashboard</title>
   
 </head>
@@ -79,7 +79,7 @@
     <div class="HeadingBox">
       <h1>Vehicle Management</h1>
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search vehicle...">
+        <input type="text" class="search-input" placeholder="Search vehicle..." id="search-vehicle">
         <button class="add-vehicle-btn" id="toggleAddVehicle">Add Vehicle</button>
         <a href="http://127.0.0.1:5501/Pages/vehicle.html">
           <button class="add-vehicle-btn" style="margin-left: 8px;">View Vehicle</button>
@@ -94,39 +94,79 @@
         <table class="vehicle-table">
           <thead>
             <tr>
+              <th>Vehicle code</th>
               <th>licensePlateNumber</th>
               <th>vehicleCategory</th>
               <th>fuelType</th>
-              <th>Status</th>
+              <th>status</th>
               <th>remarks</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>ABW 2323</td>
-              <td>car</td>
-              <td>petrol</td>
-              <td>cheese kallak</td>
+              <td>1</td>
+              <td>sawala</td>
+              <td>yakada</td>
+              <td>genichcha</td>
+              <td>yakada</td>
+              <td>genichcha</td>
               <td>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
               </td>
             </tr>
-            </tbody>
+            <tr>
+              <td>2</td>
+              <td>vilbarakke</td>
+              <td>wahana</td>
+              <td>maduwe athi</td>
+              <td>yakada</td>
+              <td>genichcha</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>alawanguwa</td>
+              <td>yakada</td>
+              <td>natiwela</td>
+              <td>yakada</td>
+              <td>genichcha</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>kokupihiya</td>
+              <td>kapana ewa</td>
+              <td>hichchage ine</td>
+              <td>yakada</td>
+              <td>genichcha</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
+      
 
       <!-- Staff Form Container (Initially Hidden) -->
       <div class="vehicle-form-container" id="vehicleFormContainer" style="display: none;">
         <form id="vehicleForm">
           <div class="inputFieldBox">
+            <input type="text" class="form-control mb-3" placeholder="vehicleCode" id="vehicleCode" readonly>
             <input type="text" class="form-control mb-3" placeholder="licensePlateNumber" id="licensePlateNumber" required>
-            <input type="text" class="form-control mb-3" placeholder="vehicleCategory" id="vehicleCategory" required>
+            <input type="text" class="form-control mb-3" placeholder="vehicleCategory" id="vehicleCategory" rquiredy>
             <input type="text" class="form-control mb-3" placeholder="fuelType" id="fuelType" required>
-            <input type="text" class="form-control mb-3" placeholder="Status" id="status" required>
+            <input type="text" class="form-control mb-3" placeholder="vehicleStatus" id="vehicleStatus" rquired>
             <input type="text" class="form-control mb-3" placeholder="remarks" id="remarks" required>
             
-          
           <div class="ButtonBox">
             <button type="button" class="btn btn-success" id="saveButton">Save</button>
             <button type="button" class="btn btn-primary" id="updateButton">Update</button>
@@ -138,6 +178,6 @@
     </div>
   </main>
 
-  <script src="/controller/vehicle.js" type="module"></script>
+  <script src="/controller/vehicleController.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>

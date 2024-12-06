@@ -1,5 +1,6 @@
 import { getAllEquipment, save, getEquipmentById ,updateEquipment,deleteEquipment} from "../Model/equipmentModel.js";
 import { getCookie } from "../Model/tokenModel.js";
+import{getAllStaff}from"../Model/staffModel.js"
 
 // Toggle between table and add equipment form
 document.getElementById('toggleAddEquipment').addEventListener('click', function() {
@@ -101,6 +102,7 @@ $("#saveButton").on("click", () => {
 
 /// Load equipment form for editing
 $(".equipment-table").on("click", ".edit-btn", function () {
+  loadStaffID()
   const equipmentId = $(this).data("id");
 
   // Clear existing form state to avoid conflicts
@@ -140,6 +142,7 @@ $("#updateButton").on("click", function () {
     name: $("#name").val(),
     type: $("#type").val(),
     status: $("#status").val(),
+    staffId:$("#staffId").val()
   };
 
   if (!updatedEquipment.name || !updatedEquipment.type || !updatedEquipment.status) {
@@ -190,3 +193,17 @@ $("#search-equipment").on("keyup",function(){
     }
   })
 })
+function loadStaffID(){
+  getAllStaff().then((staffMembers)=>{
+    const staffDropdown = $("#staffId");
+    // staffDropdown.empty(); // Clear any existing options
+    staffDropdown.append('<option value="null">Hand-Overed</option>'); // Option to hand over
+    staffDropdown.append('<option value="" disabled selected>Assign Staff</option>'); // Default option
+    $.each(staffMembers, function (index, staff) {
+      staffDropdown.append(
+        `<option value="${staff.staffId}">${staff.staffId} - ${staff.firstName}</option>` // Customize as per your API response
+      );
+    });
+  })
+ 
+}
