@@ -38,23 +38,6 @@ function loadForm(staffId) {
     
 }
 
-
-// $(document).ready(function () {
-//   $(document).ready(function () {
-//     // Event listener for closing the form
-//     $('#closeStaffFormButton').on('click', function () {
-//         // Hide the popup form (assuming popup has id "staffPopup")
-//         $('#staffPopup').css('display', 'none');
-//     });
-// });
-
-//   // Event listener for clicking on a staff row (to show the form)
-//   $(".staff-table").on("click", "tr", function () {
-//       const staffId = $(this).find("td:first").text(); // Assuming staffId is in the first column
-//       loadForm(staffId); // Load the form with the clicked staff details
-//   });
-// });
-
 $(document).ready(function () {
   $(".staff-table").on("click", "tr", function (event) {
     const target = $(event.target);
@@ -73,28 +56,6 @@ $(document).ready(function () {
     loadForm(staffId); // Load the form with the clicked staff details
   });
 });
-
-
-// $("#saveButton").on("click", () => {
-//     const formData = {
-//         staffId: $('#staffId').val(),
-//         firstName: $('#firstName').val(),
-//         lastName: $('#lastName').val(),
-//         designation: $('#designation').val(),
-//         gender: $('#gender').val(),
-//         dob: $('#dob').val(),
-//         joinedDate: $('#joinedDate').val(),
-//         addressLine01: $('#addressLine1').val(),
-//         addressLine02: $('#addressLine2').val(),
-//         addressLine03: $('#addressLine3').val(),
-//         addressLine04: $('#addressLine4').val(),
-//         addressLine05: $('#addressLine5').val(),
-//         contactNo: $('#contactNo').val(),
-//         email: $('#email').val(),
-//         role: $('#role').val()
-//       };
-//     saveStaffMember(formData);
-// })
 function loadTable(){
     const table=$(".staff-table tbody")
     table.empty()
@@ -153,16 +114,6 @@ $(document).ready(function () {
     tableContainer.style.display = 'none';
     formContainer.style.display = 'block';
   });
-  //popupp update
-  // document.getElementById('edit-btn').addEventListener('click', function() {
-  //   const tableContainer = document.getElementById('staffTableContainer');
-  //   const formContainer = document.getElementById('staffFormContainer');
-    
-  //   // Hide table and show form
-  //   tableContainer.style.display = 'none';
-  //   formContainer.style.display = 'block';
-  // });
-  // Cancel button to return to table view
   document.getElementById('cancelButton').addEventListener('click', function() {
     const tableContainer = document.getElementById('staffTableContainer');
     const formContainer = document.getElementById('staffFormContainer');
@@ -172,27 +123,6 @@ $(document).ready(function () {
     tableContainer.style.display = 'block';
   });
 
-  
-
-// jhsjhs
-
-/**
- * Deletes a staff member after confirmation.
- */
-// function deleteStaffMember(staffId) {
-//   // Ask for confirmation before deletion
-//   if (confirm("Are you sure you want to delete this staff member?")) {
-//     deleteStaff(staffId)
-//       .then(() => {
-//         alert("Staff member deleted successfully!");
-//         location.reload();  // Reload the page to reflect the changes
-//       })
-//       .catch((error) => {
-//         alert("Failed to delete staff member.");
-//         console.error("Error deleting staff member:", error);
-//       });
-//   }
-// }
 $(document).on("click", ".delete-btn", function () {
   const staffId = $(this).closest("tr").find("td:first").text(); // Get the staffId from the first column of the row
 

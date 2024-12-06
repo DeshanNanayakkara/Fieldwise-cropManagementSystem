@@ -22,30 +22,29 @@ export function getAllEquipment() {
 
 // Save new equipment data
 export function save(equipment) {
-    console.log("Saving equipment:", equipment);  // Debug log for the equipment data
+    console.log("Saving equipment:", equipment);
     return new Promise((resolve, reject) => {
         $.ajax({
             url: "http://localhost:8080/cropmonitor/api/v1/equipment",
             type: "POST",
             headers: {
-                Authorization: `Bearer ${getCookie("authToken")}`, 
+                Authorization: `Bearer ${getCookie("authToken")}`,
             },
             contentType: "application/json",
             data: JSON.stringify(equipment),
-            success: function(response) {
+            success: function (response) {
                 console.log("Equipment saved successfully:", response);
                 resolve(response);
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.error("Save failed. jqXHR:", jqXHR);  // Log the full jqXHR object for more details
-                console.error("Status:", textStatus);  // Log the status
-                console.error("Error Thrown:", errorThrown);  // Log any error message
-                alert(`Save failed: ${textStatus}, ${errorThrown}`);  // Alert user with error info
-                reject(`Save failed: ${textStatus}, ${errorThrown}`);
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error("Save failed:", jqXHR.responseJSON || textStatus);
+                alert(jqXHR.responseJSON?.message || "Failed to save equipment.");
+                reject(errorThrown);
             },
         });
     });
 }
+
 
 
 // Get equipment by ID
@@ -68,3 +67,45 @@ export function getEquipmentById(equipmentId) {
         });
     });
 }
+export function updateEquipment(equipmentId, updatedEquipment) {
+    console.log("Updating equipment:", equipmentId, updatedEquipment); // Debug log
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: `http://localhost:8080/cropmonitor/api/v1/equipment/${equipmentId}`,
+        type: "PATCH", // Changed from PUT to PATCH
+        headers: {
+          Authorization: `Bearer ${getCookie("authToken")}`,
+        },
+        contentType: "application/json",
+        data: JSON.stringify(updatedEquipment),
+        success: function (response) {
+          console.log("Equipment updated successfully:", response);
+          resolve(response);
+        },
+        error: function (xhr, status, error) {
+          console.error("Error updating equipment:", xhr.responseJSON || status);
+          alert(xhr.responseJSON?.message || "Failed to update equipment.");
+          reject(error);
+        },
+      });
+    });
+  }
+  export function deleteEquipment(equipmentId) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `http://localhost:8080/cropmonitor/api/v1/equipment/${equipmentId}`, // API endpoint
+            type: "DELETE", // HTTP method
+            headers: {
+                Authorization: `Bearer ${getCookie("authToken")}`, // Include authentication token
+            },
+            success: function () {
+                resolve(); // Resolve promise if request is successful
+            },
+            error: function (xhr, status, error) {
+                console.error(`Error deleting equipment: ${error}`);
+                reject(error); // Reject promise if an error occurs
+            },
+        });
+    });
+}
+  

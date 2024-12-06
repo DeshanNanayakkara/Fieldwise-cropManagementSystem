@@ -79,7 +79,7 @@
     <div class="HeadingBox">
       <h1>Equipment Management</h1>
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search staff...">
+        <input type="text" class="search-input" placeholder="Search staff..." id="search-equipment">
         <button class="add-equipment-btn" id="toggleAddEquipment">Add Equipment</button>
         <a href="http://127.0.0.1:5501/Pages/equipment.html">
           <button class="add-equipment-btn" style="margin-left: 8px;">View Equipment</button>
@@ -151,8 +151,13 @@
       <div class="equipment-form-container" id="equipmentFormContainer" style="display: none;">
         <form id="equipmentForm">
           <div class="inputFieldBox">
+            <input type="text" class="form-control mb-3" placeholder="equipmentId" id="equipmentId" readonly>
             <input type="text" class="form-control mb-3" placeholder="Equipment Name" id="name" required>
-            <input type="text" class="form-control mb-3" placeholder="Equipment Type" id="type" required>
+            <select class="form-control mb-3" id="type" required>
+              <option value="" disabled selected>status</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Electrical">Electrical</option>
+            </select>
             <select class="form-control mb-3" id="status" required>
               <option value="" disabled selected>status</option>
               <option value="Available">Available</option>

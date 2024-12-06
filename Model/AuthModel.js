@@ -1,19 +1,35 @@
-// Get JWT Token from Cookies
-function getJwtTokenFromCookies() {
-    const cookies = document.cookie.split('; ');
-    for (const cookie of cookies) {
-        const [key, value] = cookie.split('=');
-        if (key === 'JWT') {
-            return value;
-        }
+export function getCookie(name) {
+    const cookieString = document.cookie;
+    const cookies = cookieString.split("; ");
+  
+    for (let cookie of cookies) {
+      const [key, value] = cookie.split("=");
+      if (key === name) {
+        return value;
+      }
     }
-    return null; // Return null if token not found
-}
-
-// Save JWT Token in Cookies
-function saveJwtTokenToCookie(token) {
-    document.cookie = `JWT=${token}; path=/; max-age=3600; secure; SameSite=Strict`; 
-    // `max-age=3600` means the token will expire in 1 hour.
-}
-
-export{ getJwtTokenFromCookies, saveJwtTokenToCookie}
+  
+    return null;
+  }
+  
+  export function tokenRefresh() {
+    const token = getCookie("authToken");
+    console.log("Token: in service", token);
+  
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: `http://localhost:8080/cropmonitor/api/v1/auth?refreshToken=${token}`,
+        type: "POST",
+        success: function (result) {
+          console.log("Token refresh response:", result);
+          document.cookie = `authToken=${result.token}; path=/;`; // Update cookie
+          resolve(result.token);
+        },
+        error: function (xhr, status, error) {
+          console.error(`Error: ${status} - ${error}`);
+          reject(error);
+        },
+      });
+    });
+  }
+  
