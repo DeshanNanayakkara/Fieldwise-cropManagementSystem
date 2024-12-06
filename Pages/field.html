@@ -9,14 +9,14 @@
   <style>
     /* Previous styles from Dashboard.html remain the same */
     
-    .crop-grid {
+    .field-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
 
-    .crop-card {
+    .field-card {
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
@@ -24,33 +24,34 @@
       cursor: pointer;
     }
 
-    .crop-card:hover {
+    .field-card:hover {
       transform: scale(1.05);
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    .crop-card img {
+    .field-card img {
       width: 100%;
       height: 250px;
       object-fit: cover;
     }
 
-    .crop-card-content {
+    .field-card-content {
       padding: 15px;
       background-color: white;
     }
 
-    .save-crop-btn {
+    .view-map-btn {
       background-color: var(--primary-color);
       color: white;
       padding: 10px 15px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 10px;
+      width: 100%;
     }
 
-    .crop-form, .save-crop-form {
+    .field-form {
       background-color: white;
       padding: 20px;
       border-radius: 8px;
@@ -58,24 +59,18 @@
       margin-top: 20px;
     }
 
-    .crop-form input, .save-crop-form input {
+    .field-form input {
       width: 100%;
       padding: 10px;
       margin-bottom: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
     }
-
-    .image-upload-container {
-      border: 2px dashed #ddd;
-      padding: 20px;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
   <nav class="nav" id="navbar">
-    <!-- Navigation bar from Dashboard.html remains the same -->
+    <!-- Same navigation bar as previous dashboard -->
     <div class="nav-firstgrid" id="nav-first-grid">
       <h3 class="nav-title" id="nav-title">Green Shadow</h3>
       <i class="fa-solid fa-caret-right" id="nav-toggle-btn"></i>
@@ -117,7 +112,7 @@
         </div>
       </a>
       
-      <a href="monitoringLogs.html">
+      <a href="vehicle.html">
         <div class="nav-item">
           <i class="fa-solid fa-seedling"></i>
           <span class="nav-text">Monitoring Logs</span>
@@ -141,74 +136,60 @@
 
   <main class="content" id="content">
     <div class="HeadingBox">
-      <h2>Crop Management</h2>
-      <button class="save-crop-btn">Save a Crop</button>
+      <h2>Field Management</h2>
     </div>
 
-    <div class="crop-grid">
-      <div class="crop-card" onclick="showUpdateForm()">
-        <img src="/Assests/Images/backgroundGreen.png" alt="Wheat">
-        <div class="crop-card-content">
-          <h3>Wheat</h3>
-          <p><strong>Common Name:</strong> Wheat</p>
-          <p><strong>Scientific Name:</strong> Triticum</p>
-          <p><strong>Category:</strong> Cereal Grain</p>
+    <div class="field-grid">
+      <div class="field-card">
+        <img src="https://via.placeholder.com/250x250?text=North+Field" alt="North Field">
+        <div class="field-card-content">
+          <h3>North Field</h3>
+          <p><strong>Size:</strong> 50 Acres</p>
+          <p><strong>Crop:</strong> Wheat</p>
+          <p><strong>Status:</strong> Active</p>
+          <button class="view-map-btn">View in Map</button>
         </div>
       </div>
 
-      <div class="crop-card" onclick="showUpdateForm()">
-        <img src="/Assests/Images/backgroundGreen.png" alt="Corn">
-        <div class="crop-card-content">
-          <h3>Corn</h3>
-          <p><strong>Common Name:</strong> Corn</p>
-          <p><strong>Scientific Name:</strong> Zea mays</p>
-          <p><strong>Category:</strong> Cereal Grain</p>
+      <div class="field-card">
+        <img src="https://via.placeholder.com/250x250?text=South+Field" alt="South Field">
+        <div class="field-card-content">
+          <h3>South Field</h3>
+          <p><strong>Size:</strong> 75 Acres</p>
+          <p><strong>Crop:</strong> Corn</p>
+          <p><strong>Status:</strong> Active</p>
+          <button class="view-map-btn">View in Map</button>
         </div>
       </div>
 
-      <div class="crop-card" onclick="showUpdateForm()">
-        <img src="/Assests/Images/backgroundGreen.png" alt="Rice">
-        <div class="crop-card-content">
-          <h3>Rice</h3>
-          <p><strong>Common Name:</strong> Rice</p>
-          <p><strong>Scientific Name:</strong> Oryza sativa</p>
-          <p><strong>Category:</strong> Cereal Grain</p>
+      <div class="field-card">
+        <img src="https://via.placeholder.com/250x250?text=East+Field" alt="East Field">
+        <div class="field-card-content">
+          <h3>East Field</h3>
+          <p><strong>Size:</strong> 60 Acres</p>
+          <p><strong>Crop:</strong> Rice</p>
+          <p><strong>Status:</strong> Preparing</p>
+          <button class="view-map-btn">View in Map</button>
         </div>
       </div>
     </div>
 
-    <!-- Update Crop Form (Hidden by default) -->
-    <div class="crop-form" id="updateCropForm" style="display:none;">
-      <h3>Update Crop Details</h3>
-      <input type="text" placeholder="Crop Name">
-      <input type="text" placeholder="Scientific Name">
-      <input type="text" placeholder="Category">
-      <button>Update Crop</button>
-    </div>
-
-    <!-- Save Crop Form (Hidden by default) -->
-    <div class="save-crop-form" id="saveCropForm" style="display:none;">
-      <h3>Save a New Crop</h3>
-      <input type="text" placeholder="Crop Name">
-      <input type="text" placeholder="Scientific Name">
-      <input type="text" placeholder="Category">
-      <div class="image-upload-container">
-        <input type="file" accept="image/*">
-        <p>Drag and drop or click to upload crop image</p>
-      </div>
-      <button>Save Crop</button>
+    <div class="field-form" id="fieldDetailsForm" style="display:none;">
+      <h3>Field Details</h3>
+      <input type="text" placeholder="Field Name">
+      <input type="number" placeholder="Field Size (Acres)">
+      <input type="text" placeholder="Current Crop">
+      <input type="text" placeholder="Field Status">
+      <button>Update Field</button>
     </div>
   </main>
 
   <script>
-    function showUpdateForm() {
-      document.getElementById('updateCropForm').style.display = 'block';
-      document.getElementById('saveCropForm').style.display = 'none';
-    }
-
-    document.querySelector('.save-crop-btn').addEventListener('click', function() {
-      document.getElementById('saveCropForm').style.display = 'block';
-      document.getElementById('updateCropForm').style.display = 'none';
+    document.querySelectorAll('.view-map-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Placeholder for map view functionality
+        alert('Map view functionality to be implemented');
+      });
     });
   </script>
 </body>

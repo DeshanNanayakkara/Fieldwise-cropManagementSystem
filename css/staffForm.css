@@ -457,7 +457,7 @@ a {
   padding-left: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
-  grid-template-columns: 380px 380px;
+  grid-template-columns: 380px 380px; 
   gap: 10px;
 }
 #staffDetailsForm input {

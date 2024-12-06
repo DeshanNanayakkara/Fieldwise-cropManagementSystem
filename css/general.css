@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.poppins-thin {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.poppins-extralight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.poppins-light {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-medium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.poppins-black {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.poppins-thin-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.poppins-extralight-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.poppins-regular-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.poppins-medium-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.poppins-semibold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.poppins-bold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.poppins-extrabold-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.poppins-black-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+ /* loading bar styles */
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-top: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid #16A34A;
+  border-left: 3px solid #16A34A;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+
+/* Change the width of the vertical scrollbar */
+.table-scroll {
+  overflow-y: scroll; /* Ensure scrollbar is visible */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Customizing the scrollbar */
+::-webkit-scrollbar {
+  width: 0px; /* Change this value to adjust the width of the scrollbar */
+}
+
+/* Customizing the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Change the background color of the track */
+}
+
+/* Customizing the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Change the color of the scrollbar thumb */
+  border-radius: 10px; /* Optional: Adds rounded corners to the thumb */
+}
+
+/* Hover effect on the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Change the color on hover */
+}
+
+/* set button styles when active  */
+
+button.active {
+    color: #16a34a; 
+    border-left: 4px solid #16a34a; 
+  }
+  
+  button.active {
+    background-color: #f3f4f6;
+  }
+  
+  button.active #home-icon {
+    content: url('../img/menu/Home.png');
+  }
+  button.active #staff-icon {
+    content: url('../img/menu/Team.png');
+  }
+  button.active #field-icon {
+    content: url('../img/menu/Grass.png');
+  }
+  button.active #crop-icon {
+    content: url('../img/menu/Corn.png');
+  }
+  button.active #mlog-icon {
+    content: url('../img/menu/Clipboard.png');
+  }
+  button.active #equipment-icon {
+    content: url('../img/menu/Tools.png');
+  }
+  button.active #vehicle-icon {
+    content: url('../img/menu/Tractor.png');
+  }
+  button.active #logout-icon {
+    content: url('../img/menu/Logout.png');
+  }
+  button.active #settings-icon {
+    content: url('../img/menu/Logout.png');
+  }
+  
+  
+  
+  /* set button styles when hover  */
+  button #crop-icon {
+    content: url('../img/menu/Corn-gray.png');
+  }
+  button:hover #crop-icon {
+    content: url('../img/menu/Corn.png');
+  }
+  
+  button #settings-icon {
+    content: url('../img/menu/Settings-gray.png');
+  }
+  button:hover #settings-icon {
+    content: url('../img/menu/Settings.png');
+  }
+  
+  button #vehicle-icon {
+    content: url('../img/menu/Tractor-gray.png');
+  }
+  button:hover #vehicle-icon {
+    content: url('../img/menu/Tractor.png');
+  }
+  
+  button #equipment-icon {
+    content: url('../img/menu/tools-gray.png');
+  }
+  button:hover #equipment-icon {
+    content: url('../img/menu/Tools.png');
+  }
+  
+  button #mlog-icon {
+    content: url('../img/menu/Clipboard-gray.png');
+  }
+  button:hover #mlog-icon {
+    content: url('../img/menu/Clipboard.png');
+  }
+  
+  button #logout-icon {
+    content: url('../img/menu/logout-gray.png');
+  }
+  button:hover #logout-icon {
+    content: url('../img/menu/Logout.png');
+  }
+  
+  
+  button #field-icon {
+    content: url('../img/menu/Grass-gray.png');
+  }
+  button:hover #field-icon {
+    content: url('../img/menu/Grass.png');
+  }
+  
+  
+  button #staff-icon {
+    content: url('../img/menu/Team-gray.png');
+  }
+  button:hover #staff-icon {
+    content: url('../img/menu/Team.png');
+  }
+  
+  button #home-icon {
+    content: url('../img/menu/Home-gray.png');
+  }
+  button:hover #home-icon {
+    content: url('../img/menu/Home.png');
+  }
+  
+  
+   /* sidebar styles */
+  .sidebar-hidden {
+      transform: translateX(-100%);
+    }
+    .sidebar-visible {
+      transform: translateX(0);
+    }
+    aside {
+      transition: transform 0.3s ease-in-out;
+    }

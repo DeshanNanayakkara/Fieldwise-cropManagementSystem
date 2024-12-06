@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <title>Monitoring Logs</title>
+  <link rel="stylesheet" href="/css/staffForm.css">
+  <style>
+    :root {
+      --card-background: white;
+      --text-color: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+    }
+
+   
+    .content {
+      padding: 20px;
+    }
+
+
+
+    .HeadingBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .log-card {
+      background-color: var(--card-background);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .log-card:hover {
+      transform: scale(1.03);
+    }
+
+    .log-card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .log-card-content {
+      padding: 15px;
+    }
+
+    .log-card-actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-update {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .btn-save {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .log-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .log-details p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+    <nav class="nav" id="navbar">
+        <div class="nav-firstgrid" id="nav-first-grid">
+          <h3 class="nav-title" id="nav-title">Green Shadow</h3>
+          <i class="fa-solid fa-caret-right" id="nav-toggle-btn"></i>
+        </div>
+    
+        <div class="nav-secondgrid">
+          <a href="Dashboard.html">
+            <div class="nav-item">
+              <i class="fa-solid fa-house"></i>
+              <span class="nav-text">Dashboard</span>
+          </div>
+          </a>
+          
+          <a href="staffManagement.html">
+            <div class="nav-item">
+              <i class="fa-solid fa-users-line"></i>
+                <span class="nav-text">Staff Manage</span>
+            </div>
+          </a>
+          
+          <a href="vehicle.html">
+            <div class="nav-item">
+              <i class="fa-solid fa-truck-moving"></i>
+              <span class="nav-text">Vehicle Manage</span>
+          </div>
+          </a>
+          
+          <a href="cropManagement.html">
+            <div class="nav-item">
+              <i class="fa-solid fa-seedling"></i>
+              <span class="nav-text">Crop Manage</span>
+          </div>
+          </a>
+          
+           <a href="field.html"><!-- #field -->
+            <div class="nav-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="nav-text">Field Manage</span>
+          </div>
+          </a>
+          
+          <a href="monitoringLogs.html"> <!-- #monitorin logs -->
+            <div class="nav-item">
+              <i class="fa-solid fa-seedling"></i>
+              <span class="nav-text">Monitoring Logs</span>
+          </div>
+          </a>
+          
+          <a href="equipment.html">
+            <div class="nav-item">
+              <i class="fa-solid fa-toolbox"></i>
+              <span class="nav-text">Equipment</span>
+          </div>
+          </a>
+          
+        </div>
+        
+    
+        <div class="nav-thirdgrid">
+          <a href="http://127.0.0.1:5501/index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </a>
+        </div>
+      </nav>
+
+  <main class="content">
+    <div class="HeadingBox">
+      <h1>Monitoring Logs</h1>
+      <button class="btn btn-save">Create New Log</button>
+    </div>
+
+    <div class="logs-grid">
+      <div class="log-card">
+        <img src="/Assests/Images/backgroundGreen.png" alt="Wheat Field" class="log-card-image">
+        <div class="log-card-content">
+          <div class="log-details">
+            <p><strong>Crop:</strong> Wheat</p>
+            <p><strong>Field:</strong> North Field</p>
+            <p><strong>Assigned Staff:</strong> John Doe</p>
+            <p><strong>Date:</strong> 2024-06-15</p>
+            <p><strong>Status:</strong> In Progress</p>
+            <p><strong>Health:</strong> Good</p>
+          </div>
+        </div>
+        <div class="log-card-actions">
+          <button class="btn btn-update">Update Log</button>
+          <button class="btn btn-save">Save Details</button>
+        </div>
+      </div>
+
+      <div class="log-card">
+        <img src="/Assests/Images/backgroundGreen.png" alt="Corn Field" class="log-card-image">
+        <div class="log-card-content">
+          <div class="log-details">
+            <p><strong>Crop:</strong> Corn</p>
+            <p><strong>Field:</strong> Central Field</p>
+            <p><strong>Assigned Staff:</strong> Jane Smith</p>
+            <p><strong>Date:</strong> 2024-06-10</p>
+            <p><strong>Status:</strong> Completed</p>
+            <p><strong>Health:</strong> Excellent</p>
+          </div>
+        </div>
+        <div class="log-card-actions">
+          <button class="btn btn-update">Update Log</button>
+          <button class="btn btn-save">Save Details</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('.btn-update').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('Update Log functionality to be implemented');
+      });
+    });
+
+    document.querySelectorAll('.btn-save').forEach(btn => {
+      btn.addEventListener('click', function() {
+        alert('Save Log functionality to be implemented');
+      });
+    });
+
+    document.querySelector('.HeadingBox .btn-save').addEventListener('click', function() {
+      alert('Create New Log functionality to be implemented');
+    });
+  </script>
+</body>
+</html>
