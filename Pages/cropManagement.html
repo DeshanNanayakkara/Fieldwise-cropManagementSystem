@@ -6,103 +6,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-zR2sul2oRHkLHv7zQGBe8c5+YqGq+60r/L4eiO5xQ2aSGXwQ7mlCpcpN/0iW0pKXQ2YBmvBV6zl(nL3+8tQigz+FR0OHLCVUZK1KsyPxIQ4nQ6DZ7GaTa2wdOGI94Qr88d6KGL9hbNYsxq3GlZVMZ9HCDB+cdxNcGLw" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/staffForm.css">
   <title>Green Shadow Dashboard</title>
-  <style>
-    .crop-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .crop-popup-content {
-            background-color: white;
-            border-radius: 10px;
-            width: 800px;
-            max-width: 95%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            animation: slideUp 0.3s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .crop-image {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-        }
-
-        .crop-details {
-            padding: 30px;
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .crop-details h2 {
-            color: #07301a;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #339966;
-            padding-bottom: 10px;
-        }
-
-        .crop-detail-row {
-            display: flex;
-            margin-bottom: 15px;
-            align-items: center;
-        }
-
-        .crop-detail-row i {
-            color: #339966;
-            margin-right: 15px;
-            width: 25px;
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #07301a;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-btn:hover {
-            color: #339966;
-        }
-
-        @media screen and (max-width: 768px) {
-            .crop-popup-content {
-                grid-template-columns: 1fr;
-            }
-
-            .crop-image {
-                height: 300px;
-            }
-        }
-  </style>
   
 </head>
 <body>
@@ -174,66 +77,126 @@
 
   <main class="content" id="content">
     <div class="HeadingBox">
-      <h1>Crop Management</h1>
+      <h2>Crop Management</h2>
       <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search crop...">
+        <input type="text" class="search-input" placeholder="Search crop..." id="search-crop">
         <button class="add-crop-btn" id="toggleAddCrop">Add Crop</button>
-        <a href="http://127.0.0.1:5501/Pages/cropManagement.html">
-          <button class="add-crop-btn" style="margin-left: 8px;">View crop</button>
+        <a href="http://127.0.0.1:5501/Pages/staffManagement.html">
+          <button class="add-crop-btn" style="margin-left: 8px;">View Crop</button>
         </a>
       </div>
     </div>
 
     <!-- Container for dynamic content -->
-    <div class="crop-popup">
-      <button class="close-btn">&times;</button>
-      <div class="crop-popup-content">
-          <img src="/path/to/crop-image.jpg" alt="Crop Image" class="crop-image">
-          <div class="crop-details">
-              <h2>Wheat</h2>
-              <div class="crop-detail-row">
-                  <i class="fas fa-seedling"></i>
-                  <strong>Scientific Name:</strong> Triticum aestivum
-              </div>
-              <div class="crop-detail-row">
-                  <i class="fas fa-tag"></i>
-                  <strong>Category:</strong> Grain Crop
-              </div>
-              <div class="crop-detail-row">
-                  <i class="fas fa-location-dot"></i>
-                  <strong>Field Code:</strong> FLD-NORTH-01
-              </div>
-              <div class="crop-detail-row">
-                  <i class="fas fa-calendar"></i>
-                  <strong>Planting Date:</strong> September 15, 2023
-              </div>
-              <div class="crop-detail-row">
-                  <i class="fas fa-ruler"></i>
-                  <strong>Expected Yield:</strong> 4.5 tons/hectare
-              </div>
-              <div class="crop-detail-row">
-                  <i class="fas fa-info-circle"></i>
-                  <strong>Additional Notes:</strong> Winter wheat variety
-              </div>
-          </div>
+    <div id="cropContentContainer" >
+      <!-- Staff Table -->
+      <div class="crop-table-container" id="cropTableContainer" >
+        <table class="crop-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Contact:NO</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td>Manager</td>
+              <td>Agriculture</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jane Smith</td>
+              <td>Field Supervisor</td>
+              <td>Crop Management</td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <div id="cropPopup" class="C-popup">
+  <div class="C-popup-content">
+        <form id="cropDetailsForm">
+          <input type="text" id="staffId" readonly />
+          <input type="text" id="firstName" readonly />
+          <input type="text" id="lastName" readonly />
+          <input type="text" id="designation" readonly />
+          <input type="text" id="gender" readonly />
+          <input type="text" id="dob" readonly />
+          <input type="text" id="addressLine1" readonly />
+          <input type="text" id="addressLine2" readonly />
+          <input type="text" id="addressLine3" readonly />
+          <input type="text" id="addressLine4" readonly />
+          <input type="text" id="addressLine5" readonly />
+          <input type="text" id="contactNo" readonly />
+          <input type="text" id="email" readonly />
+          <input type="text" id="role" readonly />
+
+    </form>
+    <button type="button" id="closeCropFormButton" class="C-btn-close">Back</button>
+
   </div>
+</div>
+
+      <!-- Staff Form Container (Initially Hidden) -->
+      <div class="crop-form-container" id="cropFormContainer" style="display: none;">
+        <form id="cropForm">
+          <div class="inputFieldBox">
+            <input type="text" class="form-control mb-3" placeholder="Staff ID" id="staffId" required>
+            <input type="text" class="form-control mb-3" placeholder="First Name" id="firstName" required>
+            <input type="text" class="form-control mb-3" placeholder="Last Name" id="lastName" required>
+            <input type="text" class="form-control mb-3" placeholder="Designation" id="designation" required>
+            
+            <select class="form-control mb-3" id="gender" required>
+              <option value="" disabled selected>Gender</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
+            
+            <input type="date" class="form-control mb-3" placeholder="Date of Birth" id="dob" required>
+            <input type="date" class="form-control mb-3" placeholder="Date Joined" id="joinedDate" required>
+            
+            <textarea class="form-control mb-3" placeholder="Address Line 1" id="addressLine1" required></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 2" id="addressLine2"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 3" id="addressLine3"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 4" id="addressLine4"></textarea>
+            <textarea class="form-control mb-3" placeholder="Address Line 5" id="addressLine5"></textarea>
+            
+            <input type="text" class="form-control mb-3" placeholder="Contact Number" id="contactNo" required>
+            <input type="email" class="form-control mb-3" placeholder="Email" id="email" required>
+
+            <select class="form-control mb-3" id="role" required>
+              <option value="" disabled selected>Role</option>
+              <option value="MANAGER">Manager</option>
+              <option value="ADMINISTRATIVE">ADMINISTRATIVE</option>
+              <option value="SCIENTIST">SCIENTIST</option>
+              <option value="OTHER">OTHER</option>
+            </select>
+          </div>
+          <div class="ButtonBox">
+            <button type="button" class="btn btn-primary" id="updateButton">Update</button>
+            <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
     <!-- popuo0 -->
      
      <!-- liskls -->
   </main>
-  <script>document.querySelector('.close-btn').addEventListener('click', function() {
-    document.querySelector('.crop-popup').style.display = 'none';
-});
 
-// Optional: Close popup when clicking outside the content
-document.querySelector('.crop-popup').addEventListener('click', function(event) {
-    if (event.target === this) {
-        this.style.display = 'none';
-    }
-});</script>
-
-  <script src="/controller/cropController.js" type="module"></script>
+  <script src="/controller/staffController.js" type="module"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/controller/dashboard.js"></script>
